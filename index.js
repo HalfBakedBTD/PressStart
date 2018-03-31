@@ -36,8 +36,8 @@ bot.on("message", async message => {
 	};
   }
   
-  let coinAmt = Math.floor(Math.random() * 4) + 1;
-  let baseAmt = Math.floor(Math.random() * 4) + 1;
+  let coinAmt = Math.floor(Math.random() * 7) + 1;
+  let baseAmt = Math.floor(Math.random() * 7) + 1;
   console.log(`COINS: ${coinAmt} : ${baseAmt}`);
   
   if (coinAmt === baseAmt) {
@@ -72,7 +72,7 @@ bot.on("message", async message => {
   //fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     //if(err) console.log(err)
   //});
-    let xpAdd = Math.floor(Math.random() * 9) + 1;
+    let xpAdd = Math.floor(Math.random() * 7) + 1;
 	console.log(`XP: ${xpAdd}`);
 	
 	if(!xp[message.author.id]){
@@ -92,7 +92,8 @@ bot.on("message", async message => {
 	  //.setTitle("You Leveled Up!")
 	  //.setColor("#FFFFFF")
 	  //.addField("New Level", curlvl + 1);
-		let coinGain = xp[message.author.id].level * 1
+		let coinMult = Math.floor(Math.random() * 3) + 1;
+		let coinGain = xp[message.author.id].level * coinMult
 		coins[message.author.id] = {
 	    coins: coins[message.author.id].coins + coinGain
 	  };
@@ -104,9 +105,11 @@ bot.on("message", async message => {
 	  if(err) console.log(err)
 	});  
   if (message.content === '!ping') {
+		message.delete();
     return message.channel.send(`📌 Pong! <@${message.author.id}>, I am online!`)
   }
   if (message.content === '!lvl') {
+		message.delete();
 	if(!xp[message.author.id]){
       xp[message.author.id] = {
         xp: 0,
@@ -128,9 +131,11 @@ bot.on("message", async message => {
     message.channel.send(`<@${message.author.id}> here are your stats:\n\n🎚 Level: ${xp[message.author.id].level}\n\n✨ Experience: ${xp[message.author.id].xp}/${difference}`);
   }
   if (message.content === '!help') {
+		message.delete();
     return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n📓 **!help** - Shows this stuff.\n🔘 **!random** - sends a random verified channel.\n\n🏦 **!cash** or **!bal** - sends your bank info.\n💵 **!give** or **!pay** - Allows sending of money to other users.\n✨ **!lvl** - shows level stats.`)
   }
   if (message.content === '!random') {
+		message.delete();
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
     let choice = Math.floor((Math.random() * towers.length));
     message.channel.send(`\`I DMed you a random channel!\``)
@@ -153,6 +158,7 @@ bot.on("message", async message => {
     message.channel.send(`🏦 <@${message.author.id}> you have 🍪${userCoins} 🏦`);
   }
   if (message.content === '!cash') {
+		message.delete();
 	 if(!coins[message.author.id]){
         coins[message.author.id] = {
             coins: 0
@@ -169,6 +175,7 @@ bot.on("message", async message => {
     message.channel.send(`🏦 <@${message.author.id}> you have 🍪${userCoins} 🏦`);
   }
   if (message.content.startsWith('!give')) {
+		message.delete();
     if(!coins[message.author.id]){
       return message.reply("You don't have any cash!")
     }
@@ -204,11 +211,12 @@ bot.on("message", async message => {
 
     message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **🍪${args[1]}**.`);
 
-    fs.writeFile("./money.json", JSON.stringify(iumics), (err) => {
+    fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
       if(err) cosole.log(err)
     });
   }
   if (message.content.startsWith('!pay')) {
+		message.delete();
     if(!coins[message.author.id]){
       return message.reply("You don't have any cash!")
     }
@@ -244,7 +252,7 @@ bot.on("message", async message => {
 
     message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **🍪${args[1]}**.`);
 
-    fs.writeFile("./money.json", JSON.stringify(iumics), (err) => {
+    fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
       if(err) cosole.log(err)
     });
   }
