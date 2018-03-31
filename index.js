@@ -15,7 +15,7 @@ const button_talked_users = new Set();
 function shout(bot) {
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
     let choice = Math.floor((Math.random() * towers.length));
-    bot.channels.filter(c => c.name === 'random-shoutouts').forEach(channel => channel.send(`I randomly rolled a channel:\n${towers[choice]}!`));
+    bot.channels.filter(c => c.name === 'random-shoutouts').forEach(channel => channel.send(`I randomly rolled a channel:\n${towers[choice]}`));
   setTimeout(() => shout(bot, message), 10*60000);
 }
 
@@ -89,11 +89,15 @@ bot.on("message", async message => {
 	xp[message.author.id].xp =  curxp + xpAdd;
 	if(nxtLvl <= xp[message.author.id].xp){
 	  xp[message.author.id].level = curlvl + 1;
+		xp[message.author.id] {
+			xp: xp[message.author.id].xp - nxtLvl
+			level: xp[message.author.id].level
+		}
 	  //let lvlup = new Discord.RichEmbed()
 	  //.setTitle("You Leveled Up!")
 	  //.setColor("#FFFFFF")
 	  //.addField("New Level", curlvl + 1);
-		let coinMult = Math.floor(Math.random() * 4) + 1;
+		let coinMult = Math.floor(Math.random() * 7) + 1;
 		let coinGain = xp[message.author.id].level * coinMult
 		coins[message.author.id] = {
 	    coins: coins[message.author.id].coins + coinGain
