@@ -34,7 +34,7 @@ bot.on("message", async message => {
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
     let choice = Math.floor((Math.random() * towers.length));
     message.channel.send(`\`I DMed you a random channel!\``)
-    return message.author.send(`<@${message.author.id}>, random spin:\n${towers[choice]}!`)
+    return message.author.send(`<@${message.author.id}>, random spin:\n${towers[choice]}!`)  
   }
 });
 
