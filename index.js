@@ -1,7 +1,13 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
-const chratis_cooldown_time = 15;
+
+//const tokens = require('./tokens.json');
+
+let coins = require("./coins.json");
+let xp = require("./xp.json");
+
+const chratis_cooldown_time = 10;
 const chratis_talked_users = new Set();
 const button_cooldown_time = 30;
 const button_talked_users = new Set();
@@ -9,13 +15,12 @@ const button_talked_users = new Set();
 function shout(bot, message) {
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
     let choice = Math.floor((Math.random() * towers.length));
-    bot.channels.filter(c => c.name === 'random-shoutouts').forEach(channel => channel.send(`I randomly rolled a channel:\n${towers[choice]}!`)
+    bot.channels.filter(c => c.name === 'random-shoutouts').forEach(channel => channel.send(`I randomly rolled a channel:\n${towers[choice]}!`));
   setTimeout(() => shout(bot, message), 1*60000);
 }
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`);
-    shout(bot, message)
 });
 
 bot.on("message", async message => {
@@ -24,8 +29,100 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
+  
+  if (!coins[message.author.id]) {
+	coins[message.author.id] = {
+	  coins: 0
+	};
+  }
+  
+  let coinAmt = Math.floor(Math.random() * 10) + 40;
+  let baseAmt = Math.floor(Math.random() * 10) + 40;
+  console.log(`COINS: ${coinAmt} : ${baseAmt}`);
+  
+  if (coinAmt === baseAmt) {
+	message.channel.send(`💰 <@${message.author.id}> +$${coinAmt}!`).then(message => {message.delete(8000)});
+    coins[message.author.id] = {
+	  coins: coins[message.author.id].coins + coinAmt
+	};
+  fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
+	if (err) console.log(err)
+  });
+  }
+  
+  //let xpAdd = Math.floor(Math.random() * 7) + 8;
+  //console.log(`XP: ${xpAdd}`)
+  
+  //xp[message.author.id].xp = xp[message.author.id] + xpAdd
+  
+  //if (!xp[message.author.id]) {
+    //xp[message.author.id] {
+	  //xp: 0,
+	  //level: 1
+	//};
+  //}
+  
+  //let nextLvl = xp[message.author.id].level * 40;
+  //let curxp = xp[message.author.id].xp;
+  //let curLvl = xp[message.author.id].level;
+  //if (nextLvl <= xp[message.author.id].xp) {
+    //xp[message.author.id].level = xp[message.author.id].level + 1;
+  //} 
+
+  //fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+    //if(err) console.log(err)
+  //});
+    let xpAdd = Math.floor(Math.random() * 9) + 1;
+	console.log(`XP: ${xpAdd}`);
+	
+	if(!xp[message.author.id]){
+	  xp[message.author.id] = {
+		xp: 0,
+		level: 1
+	  };
+	}
+  
+	let curxp = xp[message.author.id].xp;
+	let curlvl = xp[message.author.id].level;
+	let nxtLvl = xp[message.author.id].level * 200;
+	xp[message.author.id].xp =  curxp + xpAdd;
+	if(nxtLvl <= xp[message.author.id].xp){
+	  xp[message.author.id].level = curlvl + 1;
+	  //let lvlup = new Discord.RichEmbed()
+	  //.setTitle("You Leveled Up!")
+	  //.setColor("#FFFFFF")
+	  //.addField("New Level", curlvl + 1);
+	  
+	  message.channel.send(`✨ <@${message.author.id}> has just reached ${xp[message.author.id].level} ✨`).then(message => {message.delete(8000)});
+	}
+	
+	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+	  if(err) console.log(err)
+	});  
+  
   if (message.content === '!ping') {
     return message.channel.send(`📌 Pong! <@${message.author.id}>, I am online!`)
+  }
+  if (message.content === '!lvl') {
+	if(!xp[message.author.id]){
+      xp[message.author.id] = {
+        xp: 0,
+        level: 1
+      };
+    }
+    //let curxp = xp[message.author.id].xp;
+    //let curlvl = xp[message.author.id].level;
+    //let nxtLvlXp = curlvl * 200;
+    let difference = xp[message.author.id].level * 200;
+
+  //let lvlEmbed = new Discord.RichEmbed()
+  //.setAuthor(message.author.username)
+  //.setColor("#7f46b7")
+  //.addField("Level", curlvl, true)
+  //.addField("XP", curxp, true)
+  //.setFooter(`${difference} XP till level up`, message.author.displayAvatarURL);
+
+    message.channel.send(`<@${message.author.id}> here are your stats:\n\n🎚 Level: ${xp[message.author.id].level}\n\n✨ Experience: ${xp[message.author.id].xp}/${difference}`);
   }
   if (message.content === '!help') {
     return message.channel.send(`***Comming Soon...***`)
@@ -36,6 +133,63 @@ bot.on("message", async message => {
     message.channel.send(`\`I DMed you a random channel!\``)
     return message.author.send(`<@${message.author.id}>, random spin:\n${towers[choice]}!`)  
   }
+  if (message.content === '!cash') {
+	 if(!coins[message.author.id]){
+        coins[message.author.id] = {
+            coins: 0
+        };
+    }
+
+    let userCoins = coins[message.author.id].coins;
+
+    //let moneyEmbed = new Discord.RichEmbed()
+    //.setAuthor(message.author.username)
+    //.setColor("FFFFFF")
+    //.addField("💰Total iumics", `You have a total of **${userIumics}** iumics`);
+    
+    message.channel.send(`🏦 <@${message.author.id}> you have $${userCoins} 🏦`);
+  }
+  if (message.content.startsWith('!give')) {
+    if(!coins[message.author.id]){
+      return message.reply("You don't have any cash!")
+    }
+
+    let payUsers = message.mentions.users.first();
+
+    if(!coins[payUsers.id]){
+      coins[payUsers.id] = {
+        coins: 0
+      };
+    }
+
+    let payCoins = coins[payUsers.id].coins;
+    let sCoins = coins[message.author.id].coins;
+
+    if(message.author.id === payUsers.id){
+      return message.reply("You can't give to yourself!")
+  }
+  
+  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then $0!`)
+
+  if(isNaN(args[1])) return message.channel.send("Please supply a number!");
+
+    if(sCoins < args[1]) return message.reply("You do not have enough cash!");
+
+    coins[message.author.id] = {
+      coins: sCoins - parseInt(args[1])
+    };
+
+    coins[payUsers.id] = {
+      coins: payCoins + parseInt(args[1])
+    };
+
+    message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **$${args[1]}**.`);
+
+    fs.writeFile("./money.json", JSON.stringify(iumics), (err) => {
+      if(err) cosole.log(err)
+    });
+  }
 });
 
 bot.login(process.env.BOT_TOKEN);
+//bot.login(tokens.token);
