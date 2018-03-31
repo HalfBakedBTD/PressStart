@@ -41,7 +41,7 @@ bot.on("message", async message => {
   console.log(`COINS: ${coinAmt} : ${baseAmt}`);
   
   if (coinAmt === baseAmt) {
-	message.channel.send(`💰 <@${message.author.id}> +🍪${coinAmt}!`).then(message => {message.delete(8000)});
+	message.channel.send(`💰 <@${message.author.id}> +🍪${coinAmt}!`).then(message => {message.delete(2000)});
     coins[message.author.id] = {
 	  coins: coins[message.author.id].coins + coinAmt
 	};
@@ -93,7 +93,7 @@ bot.on("message", async message => {
 	  //.setColor("#FFFFFF")
 	  //.addField("New Level", curlvl + 1);
 	  
-	  message.channel.send(`✨ <@${message.author.id}> has just reached ${xp[message.author.id].level} ✨`).then(message => {message.delete(3200)});
+	  message.channel.send(`✨ <@${message.author.id}> has just reached ${xp[message.author.id].level} ✨`).then(message => {message.delete(2000)});
 	}
 	
 	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
