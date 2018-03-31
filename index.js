@@ -85,7 +85,7 @@ bot.on("message", async message => {
   
 	let curxp = xp[message.author.id].xp;
 	let curlvl = xp[message.author.id].level;
-	let nxtLvl = xp[message.author.id].level * 20;
+	let nxtLvl = xp[message.author.id].level * 50;
 	xp[message.author.id].xp =  curxp + xpAdd;
 	if(nxtLvl <= xp[message.author.id].xp){
 	  xp[message.author.id].level = curlvl + 1;
@@ -93,7 +93,7 @@ bot.on("message", async message => {
 	  //.setTitle("You Leveled Up!")
 	  //.setColor("#FFFFFF")
 	  //.addField("New Level", curlvl + 1);
-		let coinMult = Math.floor(Math.random() * 3) + 1;
+		let coinMult = Math.floor(Math.random() * 4) + 1;
 		let coinGain = xp[message.author.id].level * coinMult
 		coins[message.author.id] = {
 	    coins: coins[message.author.id].coins + coinGain
@@ -120,7 +120,7 @@ bot.on("message", async message => {
     //let curxp = xp[message.author.id].xp;
     //let curlvl = xp[message.author.id].level;
     //let nxtLvlXp = curlvl * 200;
-    let difference = xp[message.author.id].level * 20;
+    let difference = xp[message.author.id].level * 50;
 
   //let lvlEmbed = new Discord.RichEmbed()
   //.setAuthor(message.author.username)
