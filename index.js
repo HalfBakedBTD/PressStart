@@ -16,8 +16,11 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
-  if (message.content === 'p.ping') {
+  if (message.content === '!ping') {
     message.channel.send(`\`\`\`🥇 Pong! <@${message.author.id}>I am online!\`\`\``)
+  }
+  if (message.content === '!help') {
+    return message.channel.send(`***Comming Soon...***`)
   }
 });
 
