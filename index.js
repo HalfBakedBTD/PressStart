@@ -7,8 +7,8 @@ const bot = new Discord.Client({disableEveryone: true});
 let coins = require("./coins.json");
 let xp = require("./xp.json");
 
-const chratis_cooldown_time = 10;
-const chratis_talked_users = new Set();
+let cdSeconds = 5;
+let cooldown = new Set();
 const button_cooldown_time = 30;
 const button_talked_users = new Set();
 
@@ -99,7 +99,14 @@ bot.on("message", async message => {
 	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
 	  if(err) console.log(err)
 	});  
-  
+  if(!message.content.startsWith('!')) return;
+  if(cooldown.has(message.author.id)){
+    message.delete();
+    return message.reply("You have to wait 5 seconds between commands.")
+  }
+  if(!message.member.hasPermission("ADMINISTRATOR")){
+    cooldown.add(message.author.id);
+  }
   if (message.content === '!ping') {
     return message.channel.send(`📌 Pong! <@${message.author.id}>, I am online!`)
   }
