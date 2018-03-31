@@ -92,6 +92,10 @@ bot.on("message", async message => {
 	  //.setTitle("You Leveled Up!")
 	  //.setColor("#FFFFFF")
 	  //.addField("New Level", curlvl + 1);
+		let coinGain = xp[message.author.id].level * 1
+		coins[message.author.id] = {
+	    coins: coins[message.author.id].coins + coinGain
+	  };
 	  
 	  message.channel.send(`✨ <@${message.author.id}> has just reached ${xp[message.author.id].level} ✨`).then(message => {message.delete(2000)});
 	}
