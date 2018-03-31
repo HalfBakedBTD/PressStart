@@ -125,7 +125,7 @@ bot.on("message", async message => {
     message.channel.send(`<@${message.author.id}> here are your stats:\n\n🎚 Level: ${xp[message.author.id].level}\n\n✨ Experience: ${xp[message.author.id].xp}/${difference}`);
   }
   if (message.content === '!help') {
-    return message.channel.send(`**__<@${message.author.id}> here are my commands:\n\n📓 **!help** - Shows this stuff.\n🔘 **!random** - sends a random verified channel.\n\n🏦 **!cash** or **!bal** - sends your bank info.\n💵 **!give** or **!pay** - Allows sending of money to other users.\n✨ **!lvl** - shows level stats.`)
+    return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n📓 **!help** - Shows this stuff.\n🔘 **!random** - sends a random verified channel.\n\n🏦 **!cash** or **!bal** - sends your bank info.\n💵 **!give** or **!pay** - Allows sending of money to other users.\n✨ **!lvl** - shows level stats.`)
   }
   if (message.content === '!random') {
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
@@ -166,6 +166,46 @@ bot.on("message", async message => {
     message.channel.send(`🏦 <@${message.author.id}> you have $${userCoins} 🏦`);
   }
   if (message.content.startsWith('!give')) {
+    if(!coins[message.author.id]){
+      return message.reply("You don't have any cash!")
+    }
+
+    let payUsers = message.mentions.users.first();
+
+    if(!coins[payUsers.id]){
+      coins[payUsers.id] = {
+        coins: 0
+      };
+    }
+
+    let payCoins = coins[payUsers.id].coins;
+    let sCoins = coins[message.author.id].coins;
+
+    if(message.author.id === payUsers.id){
+      return message.reply("You can't give to yourself!")
+  }
+  
+  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then $0!`)
+
+  if(isNaN(args[1])) return message.channel.send("Please supply a number!");
+
+    if(sCoins < args[1]) return message.reply("You do not have enough cash!");
+
+    coins[message.author.id] = {
+      coins: sCoins - parseInt(args[1])
+    };
+
+    coins[payUsers.id] = {
+      coins: payCoins + parseInt(args[1])
+    };
+
+    message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **$${args[1]}**.`);
+
+    fs.writeFile("./money.json", JSON.stringify(iumics), (err) => {
+      if(err) cosole.log(err)
+    });
+  }
+  if (message.content.startsWith('!pay')) {
     if(!coins[message.author.id]){
       return message.reply("You don't have any cash!")
     }
