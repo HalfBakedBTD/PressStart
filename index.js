@@ -99,14 +99,6 @@ bot.on("message", async message => {
 	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
 	  if(err) console.log(err)
 	});  
-  if(!message.content.startsWith('!')) return;
-  if(cooldown.has(message.author.id)){
-    message.delete();
-    return message.reply("You have to wait 5 seconds between commands.")
-  }
-  if(!message.member.hasPermission("ADMINISTRATOR")){
-    cooldown.add(message.author.id);
-  }
   if (message.content === '!ping') {
     return message.channel.send(`📌 Pong! <@${message.author.id}>, I am online!`)
   }
