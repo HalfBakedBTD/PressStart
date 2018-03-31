@@ -125,13 +125,29 @@ bot.on("message", async message => {
     message.channel.send(`<@${message.author.id}> here are your stats:\n\n🎚 Level: ${xp[message.author.id].level}\n\n✨ Experience: ${xp[message.author.id].xp}/${difference}`);
   }
   if (message.content === '!help') {
-    return message.channel.send(`***Comming Soon...***`)
+    return message.channel.send(`**__<@${message.author.id}> here are my commands:\n\n📓 **!help** - Shows this stuff.\n🔘 **!random** - sends a random verified channel.\n\n🏦 **!cash** or **!bal** - sends your bank info.\n💵 **!give** or **!pay** - Allows sending of money to other users.\n✨ **!lvl** - shows level stats.`)
   }
   if (message.content === '!random') {
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
     let choice = Math.floor((Math.random() * towers.length));
     message.channel.send(`\`I DMed you a random channel!\``)
     return message.author.send(`<@${message.author.id}>, random spin:\n${towers[choice]}!`)  
+  }
+  if (message.content === '!bal') {
+	 if(!coins[message.author.id]){
+        coins[message.author.id] = {
+            coins: 0
+        };
+    }
+
+    let userCoins = coins[message.author.id].coins;
+
+    //let moneyEmbed = new Discord.RichEmbed()
+    //.setAuthor(message.author.username)
+    //.setColor("FFFFFF")
+    //.addField("💰Total iumics", `You have a total of **${userIumics}** iumics`);
+    
+    message.channel.send(`🏦 <@${message.author.id}> you have $${userCoins} 🏦`);
   }
   if (message.content === '!cash') {
 	 if(!coins[message.author.id]){
