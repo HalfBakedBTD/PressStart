@@ -36,12 +36,12 @@ bot.on("message", async message => {
 	};
   }
   
-  let coinAmt = Math.floor(Math.random() * 10) + 40;
-  let baseAmt = Math.floor(Math.random() * 10) + 40;
+  let coinAmt = Math.floor(Math.random() * 4) + 1;
+  let baseAmt = Math.floor(Math.random() * 4) + 1;
   console.log(`COINS: ${coinAmt} : ${baseAmt}`);
   
   if (coinAmt === baseAmt) {
-	message.channel.send(`💰 <@${message.author.id}> +$${coinAmt}!`).then(message => {message.delete(8000)});
+	message.channel.send(`💰 <@${message.author.id}> +🍪${coinAmt}!`).then(message => {message.delete(8000)});
     coins[message.author.id] = {
 	  coins: coins[message.author.id].coins + coinAmt
 	};
@@ -84,7 +84,7 @@ bot.on("message", async message => {
   
 	let curxp = xp[message.author.id].xp;
 	let curlvl = xp[message.author.id].level;
-	let nxtLvl = xp[message.author.id].level * 200;
+	let nxtLvl = xp[message.author.id].level * 20;
 	xp[message.author.id].xp =  curxp + xpAdd;
 	if(nxtLvl <= xp[message.author.id].xp){
 	  xp[message.author.id].level = curlvl + 1;
@@ -93,7 +93,7 @@ bot.on("message", async message => {
 	  //.setColor("#FFFFFF")
 	  //.addField("New Level", curlvl + 1);
 	  
-	  message.channel.send(`✨ <@${message.author.id}> has just reached ${xp[message.author.id].level} ✨`).then(message => {message.delete(8000)});
+	  message.channel.send(`✨ <@${message.author.id}> has just reached ${xp[message.author.id].level} ✨`).then(message => {message.delete(3200)});
 	}
 	
 	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
@@ -112,7 +112,7 @@ bot.on("message", async message => {
     //let curxp = xp[message.author.id].xp;
     //let curlvl = xp[message.author.id].level;
     //let nxtLvlXp = curlvl * 200;
-    let difference = xp[message.author.id].level * 200;
+    let difference = xp[message.author.id].level * 20;
 
   //let lvlEmbed = new Discord.RichEmbed()
   //.setAuthor(message.author.username)
@@ -146,7 +146,7 @@ bot.on("message", async message => {
     //.setColor("FFFFFF")
     //.addField("💰Total iumics", `You have a total of **${userIumics}** iumics`);
     
-    message.channel.send(`🏦 <@${message.author.id}> you have $${userCoins} 🏦`);
+    message.channel.send(`🏦 <@${message.author.id}> you have 🍪${userCoins} 🏦`);
   }
   if (message.content === '!cash') {
 	 if(!coins[message.author.id]){
@@ -162,7 +162,7 @@ bot.on("message", async message => {
     //.setColor("FFFFFF")
     //.addField("💰Total iumics", `You have a total of **${userIumics}** iumics`);
     
-    message.channel.send(`🏦 <@${message.author.id}> you have $${userCoins} 🏦`);
+    message.channel.send(`🏦 <@${message.author.id}> you have 🍪${userCoins} 🏦`);
   }
   if (message.content.startsWith('!give')) {
     if(!coins[message.author.id]){
@@ -184,11 +184,11 @@ bot.on("message", async message => {
       return message.reply("You can't give to yourself!")
   }
   
-  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then $0!`)
+  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then 🍪0!`)
 
   if(isNaN(args[1])) return message.channel.send("Please supply a number!");
 
-    if(sCoins < args[1]) return message.reply("You do not have enough cash!");
+    if(sCoins < args[1]) return message.reply("You do not have enough 🍪!");
 
     coins[message.author.id] = {
       coins: sCoins - parseInt(args[1])
@@ -198,7 +198,7 @@ bot.on("message", async message => {
       coins: payCoins + parseInt(args[1])
     };
 
-    message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **$${args[1]}**.`);
+    message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **🍪${args[1]}**.`);
 
     fs.writeFile("./money.json", JSON.stringify(iumics), (err) => {
       if(err) cosole.log(err)
@@ -224,11 +224,11 @@ bot.on("message", async message => {
       return message.reply("You can't give to yourself!")
   }
   
-  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then $0!`)
+  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then 🍪0!`)
 
   if(isNaN(args[1])) return message.channel.send("Please supply a number!");
 
-    if(sCoins < args[1]) return message.reply("You do not have enough cash!");
+    if(sCoins < args[1]) return message.reply("You do not have enough 🍪!");
 
     coins[message.author.id] = {
       coins: sCoins - parseInt(args[1])
@@ -238,7 +238,7 @@ bot.on("message", async message => {
       coins: payCoins + parseInt(args[1])
     };
 
-    message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **$${args[1]}**.`);
+    message.channel.send(`🔷 <@${message.author.id}> has given <@${payUsers.id}> **🍪${args[1]}**.`);
 
     fs.writeFile("./money.json", JSON.stringify(iumics), (err) => {
       if(err) cosole.log(err)
