@@ -20,6 +20,7 @@ function shout(bot) {
 }
 
 function store(bot) {	
+	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send(`.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNEW FILES:`));
 	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
       files: ["./xp.json"]
     }));
@@ -27,7 +28,7 @@ function store(bot) {
       files: ["./coins.json"]
     }));
 																													//send(`UPDATE`).setFile("./xp.json"));
-  setTimeout(() => store(bot), 1*30000);
+  setTimeout(() => store(bot), 60*30000);
 }
 
 
