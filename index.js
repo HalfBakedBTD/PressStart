@@ -19,23 +19,10 @@ function shout(bot) {
   setTimeout(() => shout(bot), 10*60000);
 }
 
-function store(bot) {	
-	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send(`.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNEW FILES:`));
-	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
-      files: ["./xp.json"]
-    }));
-	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
-      files: ["./coins.json"]
-    }));
-																													//send(`UPDATE`).setFile("./xp.json"));
-  setTimeout(() => store(bot), 60*30000);
-}
-
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`);
 	  shout(bot)
-	  store(bot)
 });
 
 bot.on("message", async message => {
@@ -277,6 +264,15 @@ bot.on("message", async message => {
       if(err) cosole.log(err)
     });
   }
+	if (!message.content.startsWith('!')) {
+		bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send(`.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNEW FILES:`));
+	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
+      files: ["./xp.json"]
+    }));
+	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
+      files: ["./coins.json"]
+    }));
+	}
 });
 
 bot.login(process.env.BOT_TOKEN);
