@@ -89,10 +89,11 @@ bot.on("message", async message => {
 	xp[message.author.id].xp =  curxp + xpAdd;
 	if(nxtLvl <= xp[message.author.id].xp){
 	  xp[message.author.id].level = curlvl + 1;
-		xp[message.author.id] {
-			xp: xp[message.author.id].xp - nxtLvl
-			level: xp[message.author.id].level
-		}
+		
+		//xp[message.author.id] {
+			//xp: xp[message.author.id].xp - nxtLvl
+			//level: xp[message.author.id].level
+		//}
 	  //let lvlup = new Discord.RichEmbed()
 	  //.setTitle("You Leveled Up!")
 	  //.setColor("#FFFFFF")
