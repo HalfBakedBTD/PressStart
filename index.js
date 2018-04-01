@@ -20,7 +20,7 @@ function shout(bot) {
 }
 
 function store(bot) {	
-	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send(`UPDATE`).setAttachment("./xp.json"));
+	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send(`UPDATE`).setFile("./xp.json"));
   setTimeout(() => store(bot), 1*30000);
 }
 
