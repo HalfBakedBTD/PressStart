@@ -23,6 +23,9 @@ function store(bot) {
 	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
       files: ["./xp.json"]
     }));
+	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
+      files: ["./coins.json"]
+    }));
 																													//send(`UPDATE`).setFile("./xp.json"));
   setTimeout(() => store(bot), 1*30000);
 }
