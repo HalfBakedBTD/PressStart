@@ -23,6 +23,7 @@ function shout(bot) {
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`);
 	  shout(bot)
+	  bot.channels.filter(c => c.name === 'random-shoutouts').forEach(channel => channel.send(`I have restarted.`));
 });
 
 bot.on("message", async message => {
