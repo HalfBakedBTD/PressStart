@@ -12,6 +12,9 @@ let cooldown = new Set();
 const button_cooldown_time = 30;
 const button_talked_users = new Set();
 
+const gg_cooldown_time = 10;
+const gg_talked_users = new Set();
+
 function shout(bot) {
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
     let choice = Math.floor((Math.random() * towers.length));
@@ -33,8 +36,9 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
   if (!message.content.startsWith('!')) {
-	if (button_talked_users.has(message.author.id)) return
+	  if (gg_talked_users.has(message.author.id)) return
   }
+	if (message.content === '!') return
   
   if (!coins[message.author.id]) {
 	coins[message.author.id] = {
@@ -44,6 +48,9 @@ bot.on("message", async message => {
   
   let coinAmt = Math.floor(Math.random() * 7) + 1;
   let baseAmt = Math.floor(Math.random() * 7) + 1;
+	if (gg_talked_users.has(message.author.id)) {
+		let coinAmt = 50000000
+	}
   console.log(`COINS: ${coinAmt} : ${baseAmt}`);
   
   if (coinAmt === baseAmt) {
@@ -78,8 +85,16 @@ bot.on("message", async message => {
   //fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     //if(err) console.log(err)
   //});
-    let xpAdd = Math.floor(Math.random() * 7) + 1;
-	message.channel.send(`✨ ${message.author.username} +${xpAdd} XP!`).then(message => {message.delete(500)});
+	if (!message.content.startsWith('!')) {
+	  if (button_talked_users.has(message.author.id)) return
+  }
+  let xpAdd = Math.floor(Math.random() * 20) + 5;
+	if (message.content.startsWith('!')) {
+		let xpAdd = 0
+	}
+	if (!message.content.startsWith('!')) {
+	  message.channel.send(`✨ ${message.author.username} +${xpAdd} XP!`).then(message => {message.delete(500)});
+	}
 	
 	if(!xp[message.author.id]){
 	  xp[message.author.id] = {
@@ -308,6 +323,10 @@ bot.on("message", async message => {
     setTimeout(() => {
       button_talked_users.delete(message.author.id);
     }, button_cooldown_time * 1000);
+  gg_talked_users.add(message.author.id);
+    setTimeout(() => {
+      gg_talked_users.delete(message.author.id);
+    }, gg_cooldown_time * 1000);
 });
 
 bot.login(process.env.BOT_TOKEN);
