@@ -12,6 +12,9 @@ let cooldown = new Set();
 const button_cooldown_time = 30;
 const button_talked_users = new Set();
 
+const gold_cooldown_time = 10;
+const gold_talked_users = new Set();
+
 function shout(bot) {
     let towers = ["**<@413984212119715840>'s** channel: https://www.youtube.com/channel/UCy_KxAueZjIGafQ62_5J1sQ", "**<@226658795189698561>'s** channel: https://www.youtube.com/channel/UCMHmzeE7ssaO0fqJZfovAbw", "**<@346687165868015616>'s** channel: https://www.youtube.com/c/HalfBakedGaming15", "**<@125507197584146432>'s** channel: https://www.youtube.com/user/p0nchok1", "**<@418071433734914070>'s** channel: https://www.youtube.com/confusinq"]
     let choice = Math.floor((Math.random() * towers.length));
@@ -33,10 +36,9 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
   if (!message.content.startsWith('!')) {
-	  if (button_talked_users.has(message.author.id)) return
+	  if (gold_talked_users.has(message.author.id)) return
   }
-	if (message.content === '!') return
-  
+  if (message.content === '!') return	
   if (!coins[message.author.id]) {
 	coins[message.author.id] = {
 	  coins: 0
@@ -79,6 +81,11 @@ bot.on("message", async message => {
   //fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     //if(err) console.log(err)
   //});
+	if (!message.content.startsWith('!')) {
+	  if (button_talked_users.has(message.author.id)) return
+  }
+  if (message.content === '!') return	
+
     let xpAdd = Math.floor(Math.random() * 25) + 5;
 	if (message.content.startsWith('!')) {
 		let xpAdd = 0
@@ -288,6 +295,10 @@ bot.on("message", async message => {
     setTimeout(() => {
       button_talked_users.delete(message.author.id);
     }, button_cooldown_time * 1000);
+	gold_talked_users.add(message.author.id);
+    setTimeout(() => {
+      gold_talked_users.delete(message.author.id);
+    }, gold_cooldown_time * 1000);
 });
 
 bot.login(process.env.BOT_TOKEN);
