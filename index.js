@@ -80,7 +80,12 @@ bot.on("message", async message => {
     //if(err) console.log(err)
   //});
     let xpAdd = Math.floor(Math.random() * 25) + 5;
-	message.channel.send(`✨ ${message.author.username} +${xpAdd} XP!`).then(message => {message.delete(500)});
+	if (message.content.startsWith('!')) {
+		let xpAdd = 0
+	}
+	if (!message.content.startsWith('!')) {
+	  message.channel.send(`✨ ${message.author.username} +${xpAdd} XP!`).then(message => {message.delete(500)});
+	}
 	
 	if(!xp[message.author.id]){
 	  xp[message.author.id] = {
@@ -122,6 +127,7 @@ bot.on("message", async message => {
   }
   if (message.content === '!lvl') {
 		message.delete();
+		
 	if(!xp[message.author.id]){
       xp[message.author.id] = {
         xp: 0,
