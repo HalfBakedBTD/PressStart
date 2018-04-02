@@ -226,7 +226,7 @@ bot.on("message", async message => {
     //.setColor("FFFFFF")
     //.addField("??Total iumics", `You have a total of **${userIumics}** iumics`);
     
-    message.channel.send(`:cookie: <@${message.author.id}> you have ??${userCoins} ??`);
+    message.channel.send(`:bank: <@${message.author.id}> you have :cookie:${userCoins} :bank:`);
   }
   if (message.content.startsWith('!give')) {
 		message.delete();
