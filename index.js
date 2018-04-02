@@ -54,7 +54,7 @@ bot.on("message", async message => {
   console.log(`COINS: ${coinAmt} : ${baseAmt}`);
   
   if (coinAmt === baseAmt) {
-	message.channel.send(`?? <@${message.author.id}> +??${coinAmt}!`).then(message => {message.delete(2000)});
+	message.channel.send(`:cookie: <@${message.author.id}> +??${coinAmt}!`).then(message => {message.delete(2000)});
     coins[message.author.id] = {
 	  coins: coins[message.author.id].coins + coinAmt
 	};
@@ -93,7 +93,7 @@ bot.on("message", async message => {
 		let xpAdd = 0
 	}
 	if (!message.content.startsWith('!')) {
-	  message.channel.send(`? ${message.author.username} +${xpAdd} XP!`).then(message => {message.delete(500)});
+	  message.channel.send(`:sparkles: ${message.author.username} +${xpAdd} XP!`).then(message => {message.delete(500)});
 	}
 	
 	if(!xp[message.author.id]){
@@ -124,7 +124,7 @@ bot.on("message", async message => {
 	    coins: coins[message.author.id].coins + coinGain
 	  };
 	  
-	  message.channel.send(`? <@${message.author.id}> has just reached ${xp[message.author.id].level} ?`).then(message => {message.delete(2000)});
+	  message.channel.send(`:vulcan: <@${message.author.id}> has just reached ${xp[message.author.id].level} ?`).then(message => {message.delete(2000)});
 	}
 	
 	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
@@ -132,7 +132,7 @@ bot.on("message", async message => {
 	});  
   if (message.content === '!ping') {
 		message.delete();
-    return message.channel.send(`?? Pong! <@${message.author.id}>, I am online!`)
+    return message.channel.send(`Pong! <@${message.author.id}>, I am online!`)
   }
   if (message.content === '!lvl') {
 		message.delete();
@@ -154,11 +154,11 @@ bot.on("message", async message => {
   //.addField("XP", curxp, true)
   //.setFooter(`${difference} XP till level up`, message.author.displayAvatarURL);
 
-    message.channel.send(`<@${message.author.id}> here are your stats:\n\n?? Level: ${xp[message.author.id].level}\n\n? Experience: ${xp[message.author.id].xp}/${difference}`);
+    message.channel.send(`<@${message.author.id}> here are your stats:\n\n:sparkles: Level: ${xp[message.author.id].level}\n\n:pancakes: Experience: ${xp[message.author.id].xp}/${difference}`);
   }
   if (message.content === '!help') {
 		message.delete();
-    return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n?? **!help** - Shows this stuff.\n?? **!random** - sends a random verified channel.\n\n?? **!cash** or **!bal** - sends your bank info.\n?? **!give** or **!pay** - Allows sending of money to other users.\n? **!lvl** - shows level stats.`)
+    return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n:page_facing_up: **!help** - Shows this stuff.\n:game_die: **!random** - sends a random verified channel.\n\n:moneybag: **!cash** or **!bal** - sends your bank info.\n:beers: **!give** or **!pay** - Allows sending of money to other users.\n:sparkles: **!lvl** - shows level stats.\n:slot_machine: **!bet** - Lets you bet your money.`)
   }
   if (message.content === '!random') {
 		message.delete();
@@ -209,7 +209,7 @@ bot.on("message", async message => {
     //.setColor("FFFFFF")
     //.addField("??Total iumics", `You have a total of **${userIumics}** iumics`);
     
-    message.reply(`:green_book: <@${message.author.id}> :green_book:\n\n:cookie: ${userCoins}\n\n:sparkles: Level ${xp[message.author.id].level}\tExpirience: ${xp[message.author.id].xp}/${difference}`);
+    message.reply(`\n:green_book: PROFILE :green_book:\n\n:cookie: ${userCoins}\n\n:sparkles: Level ${xp[message.author.id].level}\tExpirience: ${xp[message.author.id].xp}/${difference}`);
   }
   if (message.content === '!cash') {
 		message.delete();
@@ -226,7 +226,7 @@ bot.on("message", async message => {
     //.setColor("FFFFFF")
     //.addField("??Total iumics", `You have a total of **${userIumics}** iumics`);
     
-    message.channel.send(`?? <@${message.author.id}> you have ??${userCoins} ??`);
+    message.channel.send(`:cookie: <@${message.author.id}> you have ??${userCoins} ??`);
   }
   if (message.content.startsWith('!give')) {
 		message.delete();
@@ -263,7 +263,7 @@ bot.on("message", async message => {
       coins: payCoins + parseInt(args[1])
     };
 
-    message.channel.send(`?? <@${message.author.id}> has given <@${payUsers.id}> **??${args[1]}**.`);
+    message.channel.send(`:beers: <@${message.author.id}> has given <@${payUsers.id}> **??${args[1]}**.`);
 
     fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
       if(err) cosole.log(err)
@@ -285,12 +285,8 @@ bot.on("message", async message => {
 
     let payCoins = coins[payUsers.id].coins;
     let sCoins = coins[message.author.id].coins;
-
-    if(message.author.id === payUsers.id){
-      return message.reply("You can't give to yourself!")
-  }
   
-  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then ??0!`)
+  if (parseInt(args[1]) < 0) return message.channel.send(`You can't give less then 0 cookies!`)
 
   if(isNaN(args[1])) return message.channel.send("Please supply a number!");
 
@@ -304,7 +300,7 @@ bot.on("message", async message => {
       coins: payCoins + parseInt(args[1])
     };
 
-    message.channel.send(`?? <@${message.author.id}> has given <@${payUsers.id}> **??${args[1]}**.`);
+    message.channel.send(`:beers: <@${message.author.id}> has given <@${payUsers.id}> **??${args[1]}**.`);
 
     fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
       if(err) cosole.log(err)
@@ -318,23 +314,23 @@ bot.on("message", async message => {
 
     let sCoins = coins[message.author.id].coins;
   
-  if (parseInt(args[1]) < 0) return message.channel.send(`You can't bet less then ??0!`)
+  if (parseInt(args[0]) < 0) return message.channel.send(`You can't bet less then ??0!`)
 
-  if(isNaN(args[1])) return message.channel.send("Please supply a number!");
+  if(isNaN(args[0])) return message.channel.send("Please supply a number!");
 
-    if(sCoins < args[1]) return message.reply("You do not have enough cookies!");
+    if(sCoins < args[0]) return message.reply("You do not have enough cookies!");
     let random = Math.random() * 99 + 1;
 	var number = Math.round(random)
 	if (number < 50) {
-	  message.channel.send(`:sweat_smile: <@${message.author.id}>, you rolled a ${number} and lost ${parseInt(args[1])}!`)
+	  message.channel.send(`:sweat_smile: <@${message.author.id}>, you rolled a ${number} and lost ${parseInt(args[0])}!`)
       coins[message.author.id] = {
-        coins: sCoins - parseInt(args[1])
+        coins: sCoins - parseInt(args[0])
       };
 	}
 	if (number > 49) {
-	  message.channel.send(`:scream: <@${message.author.id}>, you rolled a ${number} and won ${parseInt(args[1])}!`)
+	  message.channel.send(`:scream: <@${message.author.id}>, you rolled a ${number} and won ${parseInt(args[0])}!`)
       coins[message.author.id] = {
-        coins: sCoins + parseInt(args[1])
+        coins: sCoins + parseInt(args[0])
       };
 	}
 
