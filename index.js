@@ -54,7 +54,7 @@ bot.on("message", async message => {
   console.log(`COINS: ${coinAmt} : ${baseAmt}`);
   
   if (coinAmt === baseAmt) {
-	message.channel.send(`:cookie: <@${message.author.id}> +??${coinAmt}!`).then(message => {message.delete(2000)});
+	message.channel.send(`:cookie: <@${message.author.id}> you got **+${coinAmt} cookies**!`).then(message => {message.delete(2000)});
     coins[message.author.id] = {
 	  coins: coins[message.author.id].coins + coinAmt
 	};
@@ -182,7 +182,7 @@ bot.on("message", async message => {
     //.setColor("FFFFFF")
     //.addField("??Total iumics", `You have a total of **${userIumics}** iumics`);
     
-    message.channel.send(`?? <@${message.author.id}> you have ??${userCoins} ??`);
+    message.channel.send(`:bank: <@${message.author.id}> you have :cookie:${userCoins} :bank:`);
   }
   if (message.content === '!me') {
 		message.delete();
