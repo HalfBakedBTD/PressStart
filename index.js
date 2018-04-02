@@ -158,7 +158,7 @@ bot.on("message", async message => {
   }
   if (message.content === '!help') {
 		message.delete();
-    return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n:page_facing_up: **!help** - Shows this stuff.\n:game_die: **!random** - sends a random verified channel.\n\n:moneybag: **!cash** or **!bal** - sends your bank info.\n:beers: **!give** or **!pay** - Allows sending of money to other users.\n:sparkles: **!lvl** - shows level stats.\n:slot_machine: **!bet** - Lets you bet your money.`)
+    return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n:page_facing_up: **!help** - Shows this stuff.\n:game_die: **!random** - sends a random verified channel.\n\n:moneybag: **!cash** or **!bal** - sends your bank info.\n:beers: **!give** or **!pay** - Allows sending of money to other users.\n:sparkles: **!lvl** - shows level stats.\n:slot_machine: **!bet** - Lets you bet your money.\n:stuck_out_tongue_winking_eye: **!guess** - lets you try and guess a number!`)
   }
   if (message.content === '!random') {
 		message.delete();
@@ -338,15 +338,34 @@ bot.on("message", async message => {
       if(err) cosole.log(err)
     });
   }
-	if (!message.content.startsWith('!')) {
-		bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send(`.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNEW FILES:`));
-	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
-      files: ["./xp.json"]
-    }));
-	  bot.channels.filter(c => c.name === 'moneys').forEach(channel => channel.send({
-      files: ["./coins.json"]
-    }));
+  if (message.content.startsWith('!guess')) {
+		message.delete();
+
+    let sCoins = coins[message.author.id].coins;
+  
+  if (parseInt(args[0]) < 1) return message.channel.send(`You can't guess less than 1!`)
+	if (parseInt(args[0]) > 10) return message.channel.send(`You can't guess higher than 10!`)
+
+  if(isNaN(args[0])) return message.channel.send("Please supply a number!");
+
+  let random = Math.random() * 9 + 1;
+	var number = Math.round(random)
+	
+	if (number === parseInt(args[0])) {
+		let win = Math.random() * 4 + 1;
+		let prize = Math.round(random) * xp[message.author.id].level
+	  message.channel.send(`:scream_cat: You guessed ${parseInt(args[0])} and the number was ${number}! You win ${prize} cookies!`)
+      coins[message.author.id] = {
+        coins: sCoins + prize
+      };
 	}
+	if (!number === parseInt(args[0])) {
+	  message.channel.send(`:squid: You guessed ${parseInt(args[0])} and the number was ${number}! You win Nothing!`)
+	}
+    fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
+      if(err) cosole.log(err)
+    });
+  }
 	button_talked_users.add(message.author.id);
     setTimeout(() => {
       button_talked_users.delete(message.author.id);
