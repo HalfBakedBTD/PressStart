@@ -157,7 +157,7 @@ bot.on("message", async message => {
   }
   if (message.content === '!help') {
 		message.delete();
-    return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n📓 **!help** - Shows this stuff.\n🔘 **!random** - sends a random verified channel.\n\n🏦 **!cash** or **!bal** - sends your bank info.\n💵 **!give** or **!pay** - Allows sending of money to other users.\n✨ **!lvl** - shows level stats.`)
+    return message.channel.send(`**__<@${message.author.id}> here are my commands:__**\n\n📓 **!help** - Shows this stuff.\n🎧 **!add** - Sends a link to add me to your server!\n🔘 **!random** - sends a random verified channel.\n\n🏦 **!cash** or **!bal** - sends your bank info.\n💵 **!give** or **!pay** - Allows sending of money to other users.\n✨ **!lvl** - shows level stats.`)
   }
   if (message.content === '!random') {
 		message.delete();
@@ -200,7 +200,10 @@ bot.on("message", async message => {
     
     message.channel.send(`🏦 <@${message.author.id}> you have 🍪${userCoins} 🏦`);
   }
-  if (message.content.startsWith('!give')) {
+	if (message.content === '!add') {
+		message.reply(`<@${message.author.id}>: https://discordapp.com/api/oauth2/authorize?client_id=429451802845380610&permissions=8&scope=bot`)
+	}
+	if (message.content.startsWith('!give')) {
 		message.delete();
     if(!coins[message.author.id]){
       return message.reply("You don't have any cash!")
