@@ -358,9 +358,13 @@ bot.on("message", async message => {
       coins[message.author.id] = {
         coins: sCoins + prize
       };
-	}
-	if (!number === parseInt(args[0])) {
-	  message.channel.send(`:squid: You guessed ${parseInt(args[0])} and the number was ${number}! You win Nothing!`)
+	} else {
+		let win = 2;
+		let prize = Math.round(random) * xp[message.author.id].level
+	  message.channel.send(`:squid: You guessed ${parseInt(args[0])} and the number was ${number}! You win ${prize} for trying!`)
+		coins[message.author.id] = {
+        coins: sCoins + prize
+      };
 	}
     fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
       if(err) cosole.log(err)
