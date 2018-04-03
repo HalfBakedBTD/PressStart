@@ -1,12 +1,12 @@
 {
-  "name": "ium",
-  "version": "0.0.3",
+  "name": "test",
+  "version": "999.999.999",
   "description": "A discord bot made with discord.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Tetra",
+  "author": "HalfBaked",
   "license": "MIT",
   "dependencies": {
     "array-sort": "^1.0.0",
