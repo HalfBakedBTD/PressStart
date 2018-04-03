@@ -376,7 +376,7 @@ bot.on("message", async message => {
       message.channel.send(waveMessage);
       waveMessage.edit(`-`);
       message.channel.send(waveMessage);
-		  waveMessage.edit(`\`);
+		  waveMessage.edit(`\\`);
       message.channel.send(waveMessage);
 	}
 	button_talked_users.add(message.author.id);
