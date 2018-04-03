@@ -111,32 +111,51 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}sinfo`){
 
-    let sicon = message.guild.iconURL;
-    let serverembed = new Discord.RichEmbed()
-    .setDescription("Server Information")
-    .setColor("#15f153")
-    .setThumbnail(sicon)
-    .addField("Server Name", message.guild.name)
-    .addField("Created On", message.guild.createdAt)
-    .addField("You Joined", message.member.joinedAt)
-    .addField("Total Members", message.guild.memberCount);
+    //let sicon = message.guild.iconURL;
+    //let serverembed = new Discord.RichEmbed()
+    //.setDescription("Server Information")
+    //.setColor("#15f153")
+    //.setThumbnail(sicon)
+    //.addField("Server Name", message.guild.name)
+    //.addField("Created On", message.guild.createdAt)
+    //.addField("You Joined", message.member.joinedAt)
+    //.addField("Total Members", message.guild.memberCount);
 
-    return message.channel.send(serverembed);
+    return message.channel.send(`📟 Server Information 📟\n\nServer Name: ${message.guild.name}\n\nTotal Members: ${message.guild.memberCount}`);
   }
 
 
 
   if(cmd === `${prefix}binfo`){
 
-    let bicon = bot.user.displayAvatarURL;
-    let botembed = new Discord.RichEmbed()
-    .setDescription("Bot Information")
-    .setColor("#15f153")
-    .setThumbnail(bicon)
-    .addField("Bot Name", bot.user.username)
-    .addField("Created On", bot.user.createdAt);
+    let botAvatar = bot.user.displayAvatarURL;
+    var text_channels = 0, voice_channels = 0;
+    bot.channels.array().forEach(channel => {
+      if (channel.type == 'text') {
+        text_channels += 1;
+      } else if (channel.type == 'voice') {
+        voice_channels += 1;
+      }
+    });
 
-    return message.channel.send(botembed);
+    //let botEmbed = new Discord.RichEmbed()
+
+    //.setDescription("Bot Information", )
+    //.setColor('#000000')
+    //.setThumbnail(botAvatar)
+    //.addField("Name", bot.user.username)
+    //.addField("Current Version", botconfig.version)
+    //.addField("Born On", bot.user.createdAt)
+    //.addField('Users', + bot.users.size + ' members', true)
+    //.addField("Servers", `${bot.guilds.size} servers.`)
+    //.addField("Text channels", text_channels, true)
+    //.addField("Voice Channels", voice_channels, true)
+    //.addField("Made with:", "discord.js")
+    //.addField("Made by", "<@275831434772742144>")
+    //.addField("Github", "https://github.com/tetra-dev/ium")
+    //.addField("Memory ", (process.memoryUsage().heapUsed / 1024 / 1024).toFixed() + "MB",);
+
+    return message.channel.send(`🤖Bot Information🤖\n\nName: ${bot.user.username}\n\nCreated On: ${bot.user.createdAt}\n\nOnline Users: ${bot.users.size}\n\nText Channels: ${text_channels}\n\nVoice Channels: ${voice_channels}\n\nMade With: discord.js\n\nMade By: HalfBakedGaming#6768 with ID: 346687165868015616\n\nMemory: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed() + "MB"}`);
   }
 
 });
