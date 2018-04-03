@@ -352,15 +352,15 @@ bot.on("message", async message => {
 	var number = Math.round(random)
 	
 	if (number === parseInt(args[0])) {
-		let win = Math.random() * 4 + 1;
-		let prize = Math.round(random) * xp[message.author.id].level
+		let win = Math.random() * 5 + 5;
+		let prize = Math.round(win) * xp[message.author.id].level
 	  message.channel.send(`:scream_cat: You guessed ${parseInt(args[0])} and the number was ${number}! You win ${prize} cookies!`)
       coins[message.author.id] = {
         coins: sCoins + prize
       };
 	} else {
 		let win = 2;
-		let prize = Math.round(random) * xp[message.author.id].level
+		let prize = win * xp[message.author.id].level
 	  message.channel.send(`:squid: You guessed ${parseInt(args[0])} and the number was ${number}! You win ${prize} for trying!`)
 		coins[message.author.id] = {
         coins: sCoins + prize
