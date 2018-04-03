@@ -40,6 +40,7 @@ bot.on("message", async message => {
     };
   }
 
+  let prefix = prefixes[message.guild.id].prefixes;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
