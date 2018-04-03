@@ -4,9 +4,9 @@ const superAgent = require("superagent");
 exports.run = async (bot, message, args) => {
 
     let{body} = await superAgent
-    .get(`https://random.cat/meow.json`);
+    .get(`https://random.cat/meow.jpg`);
 
-    message.channel.send(`Meow! This is a dcat!\n${body.url}`);
+    message.channel.send(`Meow! This is a cat!\n${body.url}`);
 }
 
 module.exports.help = {
