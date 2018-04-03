@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
     //.addField("You Joined", message.member.joinedAt)
     //.addField("Total Members", message.guild.memberCount);
 
-    return message.channel.send(`📟 Server Information 📟\n\nServer Name: ${message.guild.name}\n\nTotal Members: ${message.guild.memberCount}`);
+    message.channel.send(`📟 Server Information 📟\n\nServer Name: ${message.guild.name}\n\nTotal Members: ${message.guild.memberCount}`);
 }
 
 module.exports.help = {
