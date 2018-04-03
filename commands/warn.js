@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
   let warnchannel = message.guild.channels.find(`name`, "logs");
   if(!warnchannel) return message.reply("Couldn't find logs channel!");
 
-  warnchannel.send(`⚠ WARNING ⚠\n\nWarned User: <@$wUser.id}>\n\nWarned By: <@${message.author.id}>\n\nWarned In: ${message.channel}\n\nWarns for ${wUser}: ${warns[wUser.id].warns}\n\nReason: ${reason}`);
+  warnchannel.send(`⚠ WARNING ⚠\n\nWarned User: <@${wUser.id}>\n\nWarned By: <@${message.author.id}>\n\nWarned In: ${message.channel}\n\nWarns for ${wUser}: ${warns[wUser.id].warns}\n\nReason: ${reason}`);
 
   if(warns[wUser.id].warns == 2){
     let muterole = message.guild.roles.find(`name`, "muted");
