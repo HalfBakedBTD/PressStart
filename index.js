@@ -39,7 +39,9 @@ bot.on("message", async message => {
       prefixes: botconfig.prefix
     };
   }
-  if (!message.content.startsWith(`${prefix}`)) return
+  if (!message.content.startsWith(`$prefix`)) {
+    return 
+  }
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
