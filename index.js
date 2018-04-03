@@ -370,13 +370,43 @@ bot.on("message", async message => {
       if(err) cosole.log(err)
     });
   }
-	if (message.content === '!load') {
+	if (message.content === '!emoji-movie') {
 		let waveMessage = await message.channel.send('-');
-      waveMessage.edit(`/`);
+      waveMessage.edit(`😄`);
       message.channel.send(waveMessage);
-      waveMessage.edit(`-`);
+      waveMessage.edit(`😃`);
       message.channel.send(waveMessage);
-		  waveMessage.edit(`\\`);
+		  waveMessage.edit(`😅`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`😙`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`😈`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`😏`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🙂`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`😺`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🐷`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🐻`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🐫`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🐐`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🐑`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🐴`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🐎`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🏇`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`😰`);
+      message.channel.send(waveMessage);
+		  waveMessage.edit(`🇩 🇴 🇳 🇪`);
       message.channel.send(waveMessage);
 	}
 	button_talked_users.add(message.author.id);
