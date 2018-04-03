@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args) => {
   }
 
   let pUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if (!pUser) return message.channel.send(`Please mention a user!`)
 
   if(!coins[pUser.id]){
     coins[pUser.id] = {
