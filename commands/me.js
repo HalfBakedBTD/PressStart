@@ -7,7 +7,8 @@ module.exports.run = async (bot, message, args) => {
   if (!tUser) {
     if(!coins[message.author.id]){
       coins[message.author.id] = {
-        coins: 0
+        coins: 0,
+        bank: 200
       };
     }
     
@@ -23,12 +24,14 @@ module.exports.run = async (bot, message, args) => {
     let nxtLvlXp = curlvl * 50;
     let difference = nxtLvlXp - curxp;
     let uCoins = coins[message.author.id].coins;
+    let uBank = coins[message.author.id].bank;
 
-    return message.reply(`here are your stats:\n\n✨ Level: ${curlvl}\n\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n🏦 Coins: ${uCoins}\n\n\`You need ${difference} experience to level up!\``)
+    return message.reply(`here are your stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${uCoins}\n🏦 Bank: ${uBank}\n\n\`You need ${difference} experience to level up!\``)
   }
   if(!coins[tUser.id]){
     coins[tUser.id] = {
-      coins: 0
+      coins: 0,
+      bank: 200
     }
   }
   if(!xp[tUser.id]){
@@ -44,8 +47,9 @@ module.exports.run = async (bot, message, args) => {
     let difference = nxtLvlXp - curxp;
 
   let plCoins = coins[tUser.id].coins;
+  let plBank = coins[tUser.id].bank;
 
-  return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n🏦 Coins: ${plCoins}\n\n\`This user need ${difference} experience to level up!\``)
+  return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${plCoins}\n🏦 Bank: ${plBank}\n\n\`This user need ${difference} experience to level up!\``)
 }
 
 module.exports.help = {
