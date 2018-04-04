@@ -11,8 +11,9 @@ module.exports.run = async (bot, message, args) => {
     }
 
     let uCoins = coins[message.author.id].coins;
+    let uBank = coins[message.author.id].bank;
 
-    return message.channel.send(`🏦 <@${message.author.id}> you have ${uCoins} coins. 🏦`)
+    return message.reply(`you have:\n\n💰 Coins: ${uCoins}\n\n🏦 Bank: ${uBank}`)
   }
   if(!coins[cUser.id]){
     coins[cUser.id] = {
@@ -21,8 +22,9 @@ module.exports.run = async (bot, message, args) => {
   }
 
   let plCoins = coins[cUser.id].coins;
+  let plBank = coins[cUser.id].bank;
 
-  return message.channel.send(`🏦 **${cUser}** has ${plCoins} coins. 🏦`)
+  return message.reply(`**${cUser}** has:\n\n💰 Coins: ${plCoins}\n\n🏦 Bank: ${plBank}`)
 }
 
 module.exports.help = {
