@@ -50,11 +50,13 @@ bot.on("message", async message => {
 
   let coinAmt = Math.floor(Math.random() * 15) + 35;
   let baseAmt = Math.floor(Math.random() * 15) + 35;
+  let mBank = coins[message.author.id].bank;
   console.log(`${coinAmt} ; ${baseAmt}`);
 
   if(coinAmt === baseAmt){
     coins[message.author.id] = {
-      coins: coins[message.author.id].coins + coinAmt
+      coins: coins[message.author.id].coins + coinAmt,
+      bank: mBank
     };
     
   fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
