@@ -45,6 +45,7 @@ module.exports.run = async (bot, message, args) => {
       message.channel.send(waveMessage);
       waveMessage.edit(`editeded`);
       message.channel.send(waveMessage);
+  }
 }
 
 module.exports.help = {
