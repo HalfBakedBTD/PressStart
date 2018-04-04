@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
   let uBank = coins[message.author.id].bank;
   
   if (parseInt(args[0]) > uCoins) return message.reply(`you don't ${parseInt(args[1])} coins to deposit`)
-  if (parseInt(args[0]) < 100) return message.repy(`you have to deposit more than 100 coins at a time.`)
+  if (parseInt(args[0]) < 100) return message.reply(`you have to deposit more than 100 coins at a time.`)
   
   coins[message.author.id] = {
     coins: uCoins - parseInt(args[0]),
