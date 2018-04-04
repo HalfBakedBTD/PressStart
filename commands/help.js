@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+let prefixes = require("../prefixes.json");
 
 exports.run = async (bot, message, args) => {
   let prefix = prefixes[message.guild.id].prefixes;
