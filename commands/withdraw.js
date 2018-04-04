@@ -4,10 +4,10 @@ let coins = require("../coins.json");
 
 module.exports.run = async (bot, message, args) => {
   if (!coins[message.author.id]) {
-    coins[message.author.id] {
+    coins[message.author.id] = {
       coins: 0,
       bank: 200
-    }
+    };
   }
   
   if(isNaN(args[0])) return message.reply("please supply a number! (`withdraw 10`)");
