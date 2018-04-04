@@ -1,7 +1,8 @@
 const Discord = require("discord.js");
 
 exports.run = async (bot, message, args) => {
-  message.channel.send("My Commands: `help`, `ban`, `kick`, `mute`, `warn`, `addrole`, `removerole`, `sinfo`, `binfo`, `woof`, and `meow`.")
+  let prefix = prefixes[message.guild.id].prefixes;
+  message.reply(`here are my commands:\n\n📄 **${prefix}help** - shows help message.`)
 }
 
 module.exports.help = {
