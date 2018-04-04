@@ -12,28 +12,17 @@ module.exports.run = async (bot, message, args) => {
 
     let uCoins = coins[message.author.id].coins;
 
-  //let coinEmbed = new Discord.RichEmbed()
-  //.setAuthor(message.author.username)
-  //.setColor("#00FF00")
-  //.addField("💸", uCoins);
-
     return message.channel.send(`🏦 <@${message.author.id}> you have ${uCoins} coins. 🏦`)
-  } else {
-    if(!coins[cUser]){
-      coins[cUser] = {
-        coins: 0
-      };
-    }
-
-    let plCoins = coins[cUser.id].coins;
-
-  //let coinEmbed = new Discord.RichEmbed()
-  //.setAuthor(message.author.username)
-  //.setColor("#00FF00")
-  //.addField("💸", uCoins);
-
-    return message.channel.send(`🏦 **${cUser}** has ${plCoins} coins. 🏦`)
   }
+  if(!coins[cUser]){
+    coins[cUser] = {
+      coins: 0
+    }
+  }
+
+  let plCoins = coins[cUser.id].coins;
+
+  return message.channel.send(`🏦 **${cUser}** has ${plCoins} coins. 🏦`)
 }
 
 module.exports.help = {
