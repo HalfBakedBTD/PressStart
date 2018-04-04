@@ -6,7 +6,8 @@ module.exports.run = async (bot, message, args) => {
   if (!cUser) {
     if(!coins[message.author.id]){
       coins[message.author.id] = {
-        coins: 0
+        coins: 0,
+        bank: 200
       };
     }
 
@@ -17,7 +18,8 @@ module.exports.run = async (bot, message, args) => {
   }
   if(!coins[cUser.id]){
     coins[cUser.id] = {
-      coins: 0
+      coins: 0,
+      bank: 200
     }
   }
 
