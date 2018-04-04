@@ -85,6 +85,7 @@ bot.on("message", async message => {
   xp[message.author.id].xp =  curxp + xpAdd;
   if(nxtLvl <= xp[message.author.id].xp){
     xp[message.author.id].level = curlvl + 1;
+    xp[message.author.id].xp = curxp - nxtLvl;
     coins[message.author.id].coins = lvlcoin + lvlcg;
     let uplvl = curlvl + 1;
     //let lvlup = new Discord.RichEmbed()
