@@ -24,16 +24,20 @@ module.exports.run = async (bot, message, args) => {
 
   let pCoins = coins[pUser.id].coins;
   let sCoins = coins[message.author.id].coins;
+  let uBank = coins[message.author.id].bank;
+  let pBank = coins[pUser.id].bank;
 
   if(sCoins < args[0]) return message.reply("there are not enough coins in your bank!");
   if(parseInt(args[1]) < 1) return message.reply("you can't donate less than 1 coin!")
 
   coins[message.author.id] = {
-    coins: sCoins - parseInt(args[1])
+    coins: sCoins - parseInt(args[1]),
+    bank: uBank
   };
 
   coins[pUser.id] = {
-    coins: pCoins + parseInt(args[1])
+    coins: pCoins + parseInt(args[1]),
+    bank: pBank
   };
 
   message.channel.send(`🙌 ${message.author} has given ${pUser} ${args[1]} coins.`);
