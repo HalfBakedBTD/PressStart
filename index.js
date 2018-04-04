@@ -65,6 +65,37 @@ bot.on("message", async message => {
 
   message.channel.send(`💸 ${message.author.username} you just gained ${coinAmt} coins. 💸`).then(msg => {msg.delete(5000)});
   }
+  
+  let xpAdd = Math.floor(Math.random() * 7) + 8;
+  console.log(xpAdd);
+
+  if(!xp[message.author.id]){
+    xp[message.author.id] = {
+      xp: 0,
+      level: 1
+    };
+  }
+
+  let curxp = xp[message.author.id].xp;
+  let curlvl = xp[message.author.id].level;
+  let nxtLvl = xp[message.author.id].level * 50;
+  let lvlcoin = coins[message.author.id].coins;
+  let lvlcg = Math.floor(Math.random() * 5) + 5 * curlvl;
+  xp[message.author.id].xp =  curxp + xpAdd;
+  if(nxtLvl <= xp[message.author.id].xp){
+    xp[message.author.id].level = curlvl + 1;
+    coins[message.author.id].coins = lvlcoin + lvlcg;
+    let uplvl = curlvl + 1;
+    //let lvlup = new Discord.RichEmbed()
+    //.setTitle("Level Up!")
+    //.setColor(purple)
+    //.addField("New Level", curlvl + 1);
+
+   message.channel.send(`<@${message.author.id}> has leveled up to level ${uplvl}`).then(msg => {msg.delete(5000)});
+  }
+  fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+    if(err) console.log(err)
+  });
 
   let prefix = prefixes[message.guild.id].prefixes;
   let messageArray = message.content.split(" ");
