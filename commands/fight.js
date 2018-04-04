@@ -36,6 +36,15 @@ module.exports.run = async (bot, message, args) => {
       bank: 200
     };
   }
+  
+  let battle = Math.floor(Math.random() * 99) + 1;
+  
+  if (battle > 49) {
+    let waveMessage = await message.channel.send(``);
+      waveMessage.edit(`edited`);
+      message.channel.send(waveMessage);
+      waveMessage.edit(`editeded`);
+      message.channel.send(waveMessage);
 }
 
 module.exports.help = {
