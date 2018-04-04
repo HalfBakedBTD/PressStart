@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
   //.addField("XP", curxp, true)
   //.setFooter(`${difference} XP til level up`, message.author.displayAvatarURL);
 
-  message.reply(`here are your level stats:\n\n✨ Level: ${curlvl}\n\n💥 Experience: ${curxp}/${difference}`)
+  message.reply(`here are your level stats:\n\n✨ Level: ${curlvl}\n\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n\`You need ${difference} experience to level up!\``)
 
 }
 
