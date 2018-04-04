@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
   if (parseInt(args[1]) < 100) return message.repy(`you have to deposit more than 100 coins at a time.`)
   
   coins[message.author.id] = {
-    coins: sCoins - parseInt(args[1])
+    coins: sCoins - parseInt(args[1]),
     bank: uBank + parseInt(args[1])
   };  
   message.reply(`you have deposited ${parseInt(args[1])} coins!`)
