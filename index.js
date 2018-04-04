@@ -4,6 +4,7 @@ const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 let coins = require("./coins.json");
+let xp = require("./xp.json");
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -91,7 +92,7 @@ bot.on("message", async message => {
     //.setColor(purple)
     //.addField("New Level", curlvl + 1);
 
-   message.channel.send(`<@${message.author.id}> has leveled up to level ${uplvl}`).then(msg => {msg.delete(5000)});
+   message.channel.send(`✨ <@${message.author.id}> has leveled up to level ${uplvl}!`).then(msg => {msg.delete(8000)});
   }
   fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     if(err) console.log(err)
