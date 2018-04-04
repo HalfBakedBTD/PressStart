@@ -14,7 +14,8 @@ module.exports.run = async (bot, message, args) => {
 
   if(!coins[pUser.id]){
     coins[pUser.id] = {
-      coins: 0
+      coins: 0,
+      bank: 200
     };
   }
   
