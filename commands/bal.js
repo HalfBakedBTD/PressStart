@@ -14,8 +14,8 @@ module.exports.run = async (bot, message, args) => {
 
     return message.channel.send(`🏦 <@${message.author.id}> you have ${uCoins} coins. 🏦`)
   }
-  if(!coins[cUser]){
-    coins[cUser] = {
+  if(!coins[cUser.id]){
+    coins[cUser.id] = {
       coins: 0
     }
   }
