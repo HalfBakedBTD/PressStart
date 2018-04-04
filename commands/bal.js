@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
   //.setColor("#00FF00")
   //.addField("💸", uCoins);
 
-    return message.channel.send(`🏦 **${cUser.username}** has ${plCoins} coins. 🏦`)
+    return message.channel.send(`🏦 **${cUser}** has ${plCoins} coins. 🏦`)
   }
 }
 
