@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
 
   let plCoins = coins[tUser.id].coins;
 
-  return message.reply(`here are ${tUser}'s stats:\n\n🏦 ${uCoins} coins.\n\n✨ Level: ${curlvl}\n\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n\`This user need ${difference} experience to level up!\``)
+  return message.reply(`here are ${tUser}'s stats:\n\n🏦 ${plCoins} coins.\n\n✨ Level: ${curlvl}\n\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n\`This user need ${difference} experience to level up!\``)
 }
 
 module.exports.help = {
