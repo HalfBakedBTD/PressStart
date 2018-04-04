@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
     coins: uCoins - parseInt(args[0]),
     bank: uBank + parseInt(args[0])
   };  
-  message.reply(`you have deposited ${parseInt(args[1])} coins!`)
+  message.reply(`you have deposited ${parseInt(args[0])} coins!`)
 }
   
 module.exports.help = {
