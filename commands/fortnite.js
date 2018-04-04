@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
   let username = args[0];
   let platform = args[1] || "pc";
   
-  let data = ft.getInfo(username, platform).then(data => {
+  ft.getInfo(username, platform).then(data => {
     console.log(data);
   }).catch(e => {
       console.log(e);
