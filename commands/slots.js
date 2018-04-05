@@ -16,16 +16,16 @@ exports.run = async (bot, message, args) => {
   if (bet < 1) return(`You must enter a valid number!`)
   
   let slots = ["🍎", "🍐", "💎", "🥝", "🍇", "🍓", "🍅", "🍋", "🍌", "🍎", "🍐", "🥝", "🍇", "🍓", "🍅", "🍋", "🍌"]
-  let aaa = Math.floor((Math.random() * slots.length));
-  let bbb = Math.floor((Math.random() * slots.length));
-  let ccc = Math.floor((Math.random() * slots.length));
-  let ddd = Math.floor((Math.random() * slots.length));
-  let eee = Math.floor((Math.random() * slots.length));
-  let fff = Math.floor((Math.random() * slots.length));
-  let ggg = Math.floor((Math.random() * slots.length));
-  let hhh = Math.floor((Math.random() * slots.length));
-  let iii = Math.floor((Math.random() * slots.length));
-  message.channel.send(`**[-- SLOTS --]**\n${aaa[slots]}${bbb[slots]}${ccc[slots]}\n${ddd[slots]}${eee[slots]}${fff[slots]}\n${ggg[slots]}${hhh[slots]}${iii[slots]}\n**[-- SLOTS --]**`)
+  let choice = Math.floor((Math.random() * slots.length));
+  let choiceTwo = Math.floor((Math.random() * slots.length));
+  let choiceThree = Math.floor((Math.random() * slots.length));
+  let choiceFour = Math.floor((Math.random() * slots.length));
+  let choiceFive = Math.floor((Math.random() * slots.length));
+  let choiceSix = Math.floor((Math.random() * slots.length));
+  let choiceSeven = Math.floor((Math.random() * slots.length));
+  let choiceEight = Math.floor((Math.random() * slots.length));
+  let choiceNine = Math.floor((Math.random() * slots.length));
+  message.channel.send(`**[-- SLOTS --]**\n${choice[slots]}${choiceTwo[slots]}${choiceThree[slots]}\n${choiceFour[slots]}${choiceFive[slots]}${choiceSix[slots]}\n${choiceSeven[slots]}${choiceEight[slots]}${choiceNine[slots]}\n**[-- SLOTS --]**`)
 }
 
 module.exports.help = {
