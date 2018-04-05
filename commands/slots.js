@@ -13,17 +13,19 @@ exports.run = async (bot, message, args) => {
   let uCoins = coins[message.author.id].coins;
   let uBank = coins[message.author.id].bank;
   
+  if (bet < 1) return(`You must enter a valid number!`)
+  
   let slots = ["🍎", "🍐", "💎", "🥝", "🍇", "🍓", "🍅", "🍋", "🍌", "🍎", "🍐", "🥝", "🍇", "🍓", "🍅", "🍋", "🍌"]
-  let a = Math.floor((Math.random() * slots.length));
-  let b = Math.floor((Math.random() * slots.length));
-  let c = Math.floor((Math.random() * slots.length));
-  let d = Math.floor((Math.random() * slots.length));
-  let e = Math.floor((Math.random() * slots.length));
-  let f = Math.floor((Math.random() * slots.length));
-  let g = Math.floor((Math.random() * slots.length));
-  let h = Math.floor((Math.random() * slots.length));
-  let i = Math.floor((Math.random() * slots.length));
-  message.reply(`**[-- SLOTS --]**\n${a[slots]}${b[slots]}${c[slots]}\n${d[slots]}${e[slots]}${f[slots]}\n${g[slots]}${h[slots]}${i[slots]}\n**[-- SLOTS --]**`)
+  let aaa = Math.floor((Math.random() * slots.length));
+  let bbb = Math.floor((Math.random() * slots.length));
+  let ccc = Math.floor((Math.random() * slots.length));
+  let ddd = Math.floor((Math.random() * slots.length));
+  let eee = Math.floor((Math.random() * slots.length));
+  let fff = Math.floor((Math.random() * slots.length));
+  let ggg = Math.floor((Math.random() * slots.length));
+  let hhh = Math.floor((Math.random() * slots.length));
+  let iii = Math.floor((Math.random() * slots.length));
+  message.channel.send(`**[-- SLOTS --]**\n${aaa[slots]}${bbb[slots]}${ccc[slots]}\n${ddd[slots]}${eee[slots]}${fff[slots]}\n${ggg[slots]}${hhh[slots]}${iii[slots]}\n**[-- SLOTS --]**`)
 }
 
 module.exports.help = {
