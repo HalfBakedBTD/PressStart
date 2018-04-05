@@ -20,6 +20,7 @@ module.exports.run = async (bot, message, args) => {
   }
   
   if(isNaN(args[1])) return message.reply("please supply a number!");
+  if (pUser.id === message.author.id) return message.reply(`nice try! You can't give to yourself!`)
   
 
   let pCoins = coins[pUser.id].coins;
