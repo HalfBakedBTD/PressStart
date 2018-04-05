@@ -12,6 +12,7 @@ module.exports.run = async (bot, message, args) => {
  }
    
    if (xp[message.author.id].level < 5) return message.reply(`you must be at level 5 to start fights!`)
+   if (coins[message.author.id].coins < 100) return message.reply(`You must have at least 100 coins to fight!`)
    
    
    let tUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
@@ -46,6 +47,8 @@ module.exports.run = async (bot, message, args) => {
   let tCoins = coins[tUser.id].coins;
   let tBank = coins[tUser.id].bank;
   
+  if (tCoins < 20) return message.reply(`you can't battle someone with less than 20 coins.`)
+  
   if (uCoins < 100) {
     let uCoins = 100
   }
@@ -62,7 +65,7 @@ module.exports.run = async (bot, message, args) => {
     let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
       waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
       message.channel.send(waveMessage);
-      waveMessage.edit(`⚔ <@${message.author.id}> has defeted ${tUser}!\n🏆 ${message.author.id} has won ${tCoins} coins!`);
+      waveMessage.edit(`⚔ <@${message.author.id}> has defeted ${tUser}!\n🏆 <@${message.author.id}> has won ${tCoins} coins!`);
       message.channel.send(waveMessage);
   }
   if (battle < 50) {
