@@ -25,7 +25,8 @@ exports.run = async (bot, message, args) => {
   let choiceSeven = Math.floor((Math.random() * slots.length));
   let choiceEight = Math.floor((Math.random() * slots.length));
   let choiceNine = Math.floor((Math.random() * slots.length));
-  message.channel.send(`**[-- SLOTS --]**\n${slots[choice]}${slots[choiceTwo]}${slots[choiceThree]}\n${slots[choiceFour]}${slots[choiceFive]}${slots[choiceSix]}\n${slots[choiceSeven]}${slots[choiceEight]}${slots[choiceNine]}\n**[-- SLOTS --]**`)
+  message.channel.send(`**[- SLOTS -]**\n${slots[choice]}${slots[choiceTwo]}${slots[choiceThree]}\n${slots[choiceFour]}${slots[choiceFive]}${slots[choiceSix]}\n${slots[choiceSeven]}${slots[choiceEight]}${slots[choiceNine]}\n**[- SLOTS -]**`)
+  
 }
 
 module.exports.help = {
