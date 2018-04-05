@@ -7,7 +7,7 @@ exports.run = async (bot, message, args) => {
     message.reply(`you have no coins to bet!`)
   }
   
-  if(isNaN(args[0])) return message.reply("please supply a number! (`bet 100`)");
+  if(isNaN(args[0])) return message.reply("please supply a number! (`slots 100`)");
   
   let bet = parseInt(args[0]);
   let uCoins = coins[message.author.id].coins;
@@ -25,7 +25,7 @@ exports.run = async (bot, message, args) => {
   let choiceSeven = Math.floor((Math.random() * slots.length));
   let choiceEight = Math.floor((Math.random() * slots.length));
   let choiceNine = Math.floor((Math.random() * slots.length));
-  message.channel.send(`**[-- SLOTS --]**\n${choice[slots]}${choiceTwo[slots]}${choiceThree[slots]}\n${choiceFour[slots]}${choiceFive[slots]}${choiceSix[slots]}\n${choiceSeven[slots]}${choiceEight[slots]}${choiceNine[slots]}\n**[-- SLOTS --]**`)
+  message.channel.send(`**[-- SLOTS --]**\n${slots[choice]}${slots[choiceTwo]}${slots[choiceThree]}\n${slots[choiceFour]}${slots[choiceFive]}${slots[choiceSix]}\n${slots[choiceSeven]}${slots[choiceEight]}${slots[choiceNine]}\n**[-- SLOTS --]**`)
 }
 
 module.exports.help = {
