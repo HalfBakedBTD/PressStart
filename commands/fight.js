@@ -41,8 +41,20 @@ module.exports.run = async (bot, message, args) => {
   }
   
   let battle = Math.floor(Math.random() * 99) + 1;
+  let uCoins = coins[message.author.id].coins;
+  let uBank = coins[message.author.id].bank;
+  let tCoins = coins[tUser.id].coins;
+  let tBank = coins[tUser.id].bank;
   
   if (battle > 49) {
+    coins[message.author.id] = {
+      coins: uCoins + tCoins,
+      bank: uBank
+    }
+    coins[tUser.id] = {
+      coins: 0,
+      bank: uBank
+    }
     let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
       waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
       message.channel.send(waveMessage);
