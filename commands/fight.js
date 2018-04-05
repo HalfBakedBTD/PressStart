@@ -25,14 +25,14 @@ module.exports.run = async (bot, message, args) => {
   
   if (!coins[message.author.id]) {
     coins[message.author.id] = {
-      coins: 0
+      coins: 0,
       bank: 200
     };
   }
   
   if (!coins[tUser.id]) {
     coins[tUser.id] = {
-      coins: 0
+      coins: 0,
       bank: 200
     };
   }
@@ -40,10 +40,17 @@ module.exports.run = async (bot, message, args) => {
   let battle = Math.floor(Math.random() * 99) + 1;
   
   if (battle > 49) {
-    let waveMessage = await message.channel.send(``);
-      waveMessage.edit(`edited`);
+    let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
+      waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
       message.channel.send(waveMessage);
-      waveMessage.edit(`editeded`);
+      waveMessage.edit(`⚔ <@${message.author.id}> has defeted ${tUser}!`);
+      message.channel.send(waveMessage);
+  }
+  if (battle < 50) {
+    let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
+      waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
+      message.channel.send(waveMessage);
+      waveMessage.edit(`☠ <@${message.author.id}> has been defeted by ${tUser}!`);
       message.channel.send(waveMessage);
   }
 }
