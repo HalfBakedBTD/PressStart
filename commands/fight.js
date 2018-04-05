@@ -46,6 +46,10 @@ module.exports.run = async (bot, message, args) => {
   let tCoins = coins[tUser.id].coins;
   let tBank = coins[tUser.id].bank;
   
+  if (uCoins < 100) {
+    let uCoins = 100
+  }
+  
   if (battle > 49) {
     coins[message.author.id] = {
       coins: uCoins + tCoins,
@@ -53,19 +57,27 @@ module.exports.run = async (bot, message, args) => {
     }
     coins[tUser.id] = {
       coins: 0,
+      bank: tBank
+    }
+    let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
+      waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
+      message.channel.send(waveMessage);
+      waveMessage.edit(`⚔ <@${message.author.id}> has defeted ${tUser}!\n🏆 ${message.author.id} has won ${tCoins} coins!`);
+      message.channel.send(waveMessage);
+  }
+  if (battle < 50) {
+    coins[tUser.id] = {
+      coins: uCoins + tCoins,
+      bank: tBank
+    }
+    coins[message.author.id] = {
+      coins: coins[message.author.id].coins - uCoins,
       bank: uBank
     }
     let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
       waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
       message.channel.send(waveMessage);
-      waveMessage.edit(`⚔ <@${message.author.id}> has defeted ${tUser}!`);
-      message.channel.send(waveMessage);
-  }
-  if (battle < 50) {
-    let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
-      waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
-      message.channel.send(waveMessage);
-      waveMessage.edit(`☠ <@${message.author.id}> has been defeted by ${tUser}!`);
+      waveMessage.edit(`☠ <@${message.author.id}> has been defeted by ${tUser}!\n🏆 ${tUser} has won ${uCoins} coins!`);
       message.channel.send(waveMessage);
   }
 }
