@@ -13,8 +13,11 @@ module.exports.run = async (bot, message, args) => {
    
    if (xp[message.author.id].level < 5) return message.reply(`you must be at level 5 to start fights!`)
    
+   
    let tUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
    if (!tUser) return message.reply(`you need to tag a user to fight them. (\`fight @MyMom#1234\`)`)
+  
+  if (tUser.id === message.author.id) return message.reply(`nice try! You can't battle yourself!`)
    
  if (!xp[tUser.id]) {
    xp[tUser.id] = {
