@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
       }
     });
 
-    message.channel.send(`🤖Bot Information🤖\n\nName: ${bot.user.username}\n\nCreated On: ${bot.user.createdAt}\n\nOnline Users: ${bot.users.size}\n\nText Channels: ${text_channels}\n\nVoice Channels: ${voice_channels}\n\nMade With: discord.js\n\nMade By: HalfBakedGaming#6768 with ID: 346687165868015616\n\nMemory: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed() + "MB"}`);
+    message.reply(`here is my information:\n\n🤖 Name: ${bot.user.username}\n\n🕥 Created On: ${bot.user.createdAt}\n\n🌲 Online Users: ${bot.users.size}\n\n#⃣ Text Channels: ${text_channels}\n\n🔈 Voice Channels: ${voice_channels}\n\n🇯 Made With: discord.js\n\n🌙 Made By: HalfBakedGaming#6768 with ID: 346687165868015616\n\n🌐 Memory: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed() + "MB"}`);
 }
   
 module.exports.help = {
