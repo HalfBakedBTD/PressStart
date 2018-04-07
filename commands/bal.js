@@ -13,8 +13,9 @@ module.exports.run = async (bot, message, args) => {
 
     let uCoins = coins[message.author.id].coins;
     let uBank = coins[message.author.id].bank;
+    let uNet = uBank + uCoins;
 
-    return message.reply(`you have:\n\n💰 Coins: ${uCoins}\n\n🏦 Bank: ${uBank}`)
+    return message.reply(`you have:\n\n💰 Coins: ${uCoins}\n\n🏦 Bank: ${uBank}\n\n⛹ Net Worth: ${uNet}`)
   }
   if(!coins[cUser.id]){
     coins[cUser.id] = {
@@ -25,8 +26,9 @@ module.exports.run = async (bot, message, args) => {
 
   let plCoins = coins[cUser.id].coins;
   let plBank = coins[cUser.id].bank;
+  let plNet = plBank + plCoins;
 
-  return message.reply(`**${cUser}** has:\n\n💰 Coins: ${plCoins}\n\n🏦 Bank: ${plBank}`)
+  return message.reply(`**${cUser}** has:\n\n💰 Coins: ${plCoins}\n\n🏦 Bank: ${plBank}\n\n⛹ Net Worth: ${plNet}`)
 }
 
 module.exports.help = {
