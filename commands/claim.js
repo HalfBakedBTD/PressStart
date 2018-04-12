@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
     bank: uBank
   }
   
-  message.reply("You have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${check}")
+  message.reply(`you have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${check}`)
 }
 
 module.exports.help = {
