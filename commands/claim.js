@@ -23,8 +23,8 @@ module.exports.run = async (bot, message, args) => {
   let sCount = 1;
   let streak = '✅';
   while (uClaims > sCount) {
-    let streak = streak + '✅';
-    let sCount = sCount + 1
+    streak = streak + '✅';
+    sCount = sCount + 1;
   }
   
   claims[message.author.id] = {
