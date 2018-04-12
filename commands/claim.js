@@ -20,6 +20,7 @@ module.exports.run = async (bot, message, args) => {
   let uCoins = coins[message.author.id].coins;
   let uBank = coins[message.author.id].bank;
   let prize = uClaims * 50;
+  let test = 'test' + 'this';
   
   claims[message.author.id] = {
     claims: uClaims
@@ -29,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
     bank: uBank
   }
   
-  message.reply(`you have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${"☑" * uClaims}`)
+  message.reply(`you have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${test}`)
 }
 
 module.exports.help = {
