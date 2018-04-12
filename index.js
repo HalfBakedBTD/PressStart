@@ -5,6 +5,7 @@ const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 let coins = require("./coins.json");
 let xp = require("./xp.json");
+let claims = require("./claims.json")
 
 fs.readdir("./commands/", (err, files) => {
 
