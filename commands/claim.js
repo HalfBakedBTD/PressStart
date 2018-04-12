@@ -3,7 +3,11 @@ const fs = require("fs");
 let coins = require("../coins.json");
 let claims = require("../claims.json")
 
+const claim_cooldown_time = 30;
+const claim_talked_users = new Set();
+
 module.exports.run = async (bot, message, args) => {
+  if (claim_talked_users.has(message.author.id)) return message.reply("you have to wait before claiming rewards again.");
   if(!coins[message.author.id]){
     coins[message.author.id] = {
       coins: 0,
@@ -36,6 +40,10 @@ module.exports.run = async (bot, message, args) => {
   }
   
   message.reply(`you have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${streak}`)
+  claim_talked_users.add(message.author.id);
+    setTimeout(() => {
+      claim_talked_users.delete(message.author.id);
+    }, claim_cooldown_time * 60000);
 }
 
 module.exports.help = {
