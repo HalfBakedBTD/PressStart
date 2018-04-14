@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
     let balEmbed = new Discord.RichEmbed()
     .setColor('#2ecc71')
     .setTitle(`<@${message.author}>:`)
-    .setDescription(`Coins: ${uCoins}\nBank: ${uBank}\n\nNet Worth: ${uNet}`)
+    .setDescription(`\nCoins: ${uCoins}\nBank: ${uBank}\n\nNet Worth: ${uNet}`)
     
     return message.channel.send(balEmbed)
   }
@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
     let balEmbed = new Discord.RichEmbed()
     .setColor('#2ecc71')
     .setTitle(`<@${cUser}>:`)
-    .setDescription(`Coins: ${plCoins}\nBank: ${plBank}\n\nNet Worth: ${plNet}`)
+    .setDescription(`\nCoins: ${plCoins}\nBank: ${plBank}\n\nNet Worth: ${plNet}`)
     
     return message.channel.send(balEmbed)
 }
