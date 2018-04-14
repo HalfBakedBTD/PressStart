@@ -41,7 +41,12 @@ module.exports.run = async (bot, message, args) => {
     bank: pBank
   };
 
-  message.channel.send(`🙌 ${message.author} has given ${pUser} ${args[1]} coins.`);
+  //message.channel.send(`🙌 ${message.author} has given ${pUser} ${args[1]} coins.`);
+  //let botAvatar = bot.user.displayAvatarURL;
+    let giveEmbed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setThumbnail("https://tse3.mm.bing.net/th?id=OIP.QbYo3zcLpLvozS5IyOsKSAHaId&pid=15.1&P=0&w=300&h=300")
+    .setDescription(`Donator: ${message.author.id}\n\nGave To: ${pUser}\n\nAmount: ${args[1]}`);
 
   fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
     if(err) cosole.log(err)
