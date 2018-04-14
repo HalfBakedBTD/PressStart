@@ -9,7 +9,7 @@ exports.run = async (bot, message, args) => {
     //message.channel.send(`Woof! This is a dog!\n${body.url}`);
     let dogEmbed = new Discord.RichEmbed()
     .setColor('#2c3e50')
-    .setDescription("Woof! This is a dog!")
+    //.setDescription("Woof! This is a dog!")
     .setImage(body.url);
   
   message.channel.send(dogEmbed);
