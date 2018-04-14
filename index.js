@@ -37,7 +37,7 @@ bot.on('guildCreate', guild => {
     let eventEmbed = new Discord.RichEmbed()
     .setColor('#27ae60')
     .setThumbnail(botAvatar)
-    .setDescription(`**Event:** added to a guild.\n\n**Guild:** ${guild.name}\n**Owner**: ${guild.owner}\n**Owner ID:** ${guild.ownerID}\n**Members:** ${guild.memberCount}\n**Region:** ${guild.region}\n**Verification Level:** ${guild.verificationLevel}`);
+    .setDescription(`**Event:** added to a guild.\n**Bot Online Users:** ${bot.users.size}\n**Bot Guilds Size:** ${bot.guilds.size}\n\n**Guild:** ${guild.name}\n**Owner**: ${guild.owner}\n**Owner ID:** ${guild.ownerID}\n**Members:** ${guild.memberCount}\n**Region:** ${guild.region}\n**Verification Level:** ${guild.verificationLevel}`);
   
    channel.send(eventEmbed);
   });
@@ -49,7 +49,7 @@ bot.on('guildDelete', guild => {
     let eventEmbed = new Discord.RichEmbed()
     .setColor('#e74c3c')
     .setThumbnail(botAvatar)
-    .setDescription(`**Event:** removed from a guild.\n\n**Guild:** ${guild.name}\n**Owner**: ${guild.owner}\n**Owner ID:** ${guild.ownerID}\n**Members:** ${guild.memberCount}\n**Region:** ${guild.region}\n**Verification Level:** ${guild.verificationLevel}`);
+    .setDescription(`**Event:** removed from a guild.\n**Bot Online Users:** ${bot.users.size}\n**Bot Guilds Size:** ${bot.guilds.size}\n\n**Guild:** ${guild.name}\n**Owner**: ${guild.owner}\n**Owner ID:** ${guild.ownerID}\n**Members:** ${guild.memberCount}\n**Region:** ${guild.region}\n**Verification Level:** ${guild.verificationLevel}`);
   
    channel.send(eventEmbed);
   });
