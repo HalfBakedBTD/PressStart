@@ -35,7 +35,7 @@ bot.on('guildCreate', guild => {
   bot.channels.filter(c => c.id === '434745565369073664').forEach(channel => {
     let botAvatar = bot.user.displayAvatarURL;
     let eventEmbed = new Discord.RichEmbed()
-    .setColor('#000000')
+    .setColor('#27ae60')
     .setThumbnail(botAvatar)
     .setDescription(`**Event:** added to a guild.\n\n**Guild:** ${guild.name}\n**Owner**: ${guild.owner}\n**Owner ID:** ${guild.ownerID}\n**Members:** ${guild.memberCount}\nRegion: ${guild.region}\nVerification Level: ${guild.verificationLevel}`);
   
@@ -47,7 +47,7 @@ bot.on('guildDelete', guild => {
   bot.channels.filter(c => c.id === '434745565369073664').forEach(channel => {
     let botAvatar = bot.user.displayAvatarURL;
     let eventEmbed = new Discord.RichEmbed()
-    .setColor('#000000')
+    .setColor('#e74c3c')
     .setThumbnail(botAvatar)
     .setDescription(`**Event:** removed from a guild.\n\n**Guild:** ${guild.name}\n**Owner**: ${guild.owner}\n**Owner ID:** ${guild.ownerID}\n**Members:** ${guild.memberCount}\nRegion: ${guild.region}\nVerification Level: ${guild.verificationLevel}`);
   
