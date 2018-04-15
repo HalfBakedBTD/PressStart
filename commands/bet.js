@@ -26,14 +26,14 @@ module.exports.run = async (bot, message, args) => {
   if(parseInt(args[0]) < 1) return message.reply("you can't bet less than 1 coin!")
   
   let dieAmt = Math.floor(Math.random() * 99) + 1;
-  let xpAmt = (Math.floor(Math.random() * 9) + 1) * xp[message.author.id].level;
+  let xpAmt = (Math.floor(Math.random() * 3) + 1) * xp[message.author.id].level;
   
   if (dieAmt > 54) {
     let win = parseInt(args[0]);
     if (dieAmt === 100) {
       win = win * 8
     }
-    xpAmt = xpAmt * 10
+    xpAmt = xpAmt * 5
     coins[message.author.id] = {
       coins: uCoins + win,
       bank: uBank
