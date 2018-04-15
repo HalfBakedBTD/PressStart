@@ -64,7 +64,7 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#ff9f1a")
     .setThumbnail(user.displayAvatarURL)
     .setDescription(`**__<@${tUser.id}>'s Stats:__\nLevel:** ${curlvl}\n**Experience:** ${curxp}/${nxtLvlXp}\n\n**Coins:** ${plCoins}\n**Bank:** ${plBank}\n\n**Net Worth:** ${plNet}`)
-    .setFooter(`This user needs ${difference}XP to level up.`, message.author.displayAvatarURL);
+    .setFooter(`This user needs ${difference}XP to level up.`, user.displayAvatarURL);
     
     return message.channel.send(meEmbed)
 }
