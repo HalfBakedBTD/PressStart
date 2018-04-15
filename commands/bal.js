@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
     //return message.reply(`you have:\n\n💰 Coins: ${uCoins}\n\n🏦 Bank: ${uBank}\n\n⛹ Net Worth: ${uNet}`)
     let balEmbed = new Discord.RichEmbed()
     .setColor('#2ecc71')
-    .setDescription(`<@${message.author.id}>, you have **${uCoins}** coins and **${uBank}** coins in the bank. Your net worth is **${uNet}**.`)
+    .setDescription(`<@${message.author.id}>, you have **${uCoins}** coins and **${uBank}** coins in the bank.\nYour net worth is **$${uNet}**.`)
     
     return message.channel.send(balEmbed)
   }
@@ -49,7 +49,7 @@ module.exports.run = async (bot, message, args) => {
   //return message.reply(`**${cUser}** has:\n\n💰 Coins: ${plCoins}\n\n🏦 Bank: ${plBank}\n\n⛹ Net Worth: ${plNet}`)
     let balEmbed = new Discord.RichEmbed()
     .setColor('#2ecc71')
-    .setDescription(`**${cUser} has **${plCoins}** coins and **${plBank}** coins in the bank. Their net worth is **${plNet}**.`)
+    .setDescription(`**${cUser} has **${plCoins}** coins and **${plBank}** coins in the bank.\nTheir net worth is **$${plNet}**.`)
     
     return message.channel.send(balEmbed)
 }
