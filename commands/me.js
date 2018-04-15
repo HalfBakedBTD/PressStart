@@ -30,6 +30,7 @@ module.exports.run = async (bot, message, args) => {
     //return message.reply(`here are your stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${uCoins}\n🏦 Bank: ${uBank}\n\n\`You need ${difference} experience to level up!\``)
     let meEmbed = new Discord.RichEmbed()
     .setColor("#ff9f1a")
+    .setThumbnail((message.author.displayAvatarURL))
     .setDescription(`**__<@${message.author.id}>'s Stats:__\n\nLevel:** ${curlvl}\n**Experience:** ${curxp}/${nxtLvlXp}\n\n**Coins:** ${uCoins}\n**Bank:** ${uBank}\n\n**Net Worth:** ${uNet}`)
     .setFooter(`**You need ${difference}XP to level up.**`, message.author.displayAvatarURL);
     
