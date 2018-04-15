@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Coins:", `${uCoins}`)
     .addField("Bank:", `${uBank}`)
     .addField("Net Worth:", `${uNet}`)
-    .setFooter(`<@${message.author.id}>, you need ${difference}XP to level up.`, message.author.displayAvatarURL);
+    .setFooter(`you need ${difference}XP to level up.`, message.author.displayAvatarURL);
     
     return message.channel.send(meEmbed)
   }
@@ -61,7 +61,7 @@ module.exports.run = async (bot, message, args) => {
 
   let plCoins = coins[tUser.id].coins;
   let plBank = coins[tUser.id].bank;
-  let plNet = (uBank + uCoins) * xp[tUser.id].level;
+  let plNet = (plBank + plCoins) * xp[tUser.id].level;
 
   //return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${plCoins}\n🏦 Bank: ${plBank}\n\n\`This user need ${difference} experience to level up!\``)
     let meEmbed = new Discord.RichEmbed()
@@ -73,7 +73,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Coins:", `${plCoins}`)
     .addField("Bank:", `${plBank}`)
     .addField("Net Worth:", `${plNet}`)
-    .setFooter(`${tUser} needs ${difference}XP to level up.`, message.author.displayAvatarURL);
+    .setFooter(`needs ${difference}XP to level up.`, message.author.displayAvatarURL);
     
     return message.channel.send(meEmbed)
 }
