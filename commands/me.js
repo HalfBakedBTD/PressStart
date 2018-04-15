@@ -25,8 +25,21 @@ module.exports.run = async (bot, message, args) => {
     let difference = nxtLvlXp - curxp;
     let uCoins = coins[message.author.id].coins;
     let uBank = coins[message.author.id].bank;
+    let uNet = (uBank + uCoins) * xp[message.author.id].level;
 
-    return message.reply(`here are your stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${uCoins}\n🏦 Bank: ${uBank}\n\n\`You need ${difference} experience to level up!\``)
+    //return message.reply(`here are your stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${uCoins}\n🏦 Bank: ${uBank}\n\n\`You need ${difference} experience to level up!\``)
+    let meEmbed = new Discord.RichEmbed()
+    .setTitle(`📔 ${message.author.username} 📔`)
+    .setThumbnail((message.author.displayAvatarURL))
+    .setColor("#ff9f1a")
+    .addField("Level:", `${curlvl}`)
+    .addField("Experience:", `${curxp}/${nxtLvlXp}`)
+    .addField("Coins:", `${uCoins}`)
+    .addField("Bank:", `${uBank}`)
+    .addField("Net Worth:", `${uNet}`)
+    .setFooter(`<@${message.author.id}>, you need ${difference}XP to level up.`, message.author.displayAvatarURL);
+    
+    return message.channel.send(meEmbed)
   }
   if(!coins[tUser.id]){
     coins[tUser.id] = {
@@ -48,8 +61,21 @@ module.exports.run = async (bot, message, args) => {
 
   let plCoins = coins[tUser.id].coins;
   let plBank = coins[tUser.id].bank;
+  let plNet = (uBank + uCoins) * xp[tUser.id].level;
 
-  return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${plCoins}\n🏦 Bank: ${plBank}\n\n\`This user need ${difference} experience to level up!\``)
+  //return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${plCoins}\n🏦 Bank: ${plBank}\n\n\`This user need ${difference} experience to level up!\``)
+    let meEmbed = new Discord.RichEmbed()
+    .setTitle(`📔 ${tUser} 📔`)
+    .setThumbnail((tUser.displayAvatarURL))
+    .setColor("#ff9f1a")
+    .addField("Level:", `${curlvl}`)
+    .addField("Experience:", `${curxp}/${nxtLvlXp}`)
+    .addField("Coins:", `${plCoins}`)
+    .addField("Bank:", `${plBank}`)
+    .addField("Net Worth:", `${plNet}`)
+    .setFooter(`${tUser} needs ${difference}XP to level up.`, message.author.displayAvatarURL);
+    
+    return message.channel.send(meEmbed)
 }
 
 module.exports.help = {
