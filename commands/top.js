@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
     };
   }
   let top = coins[message.author.id].coins + coins[message.author.id].bank;
-  bot.users.filter(u => u.id !== '434745565369073664').forEach(user => {
+  bot.users.filter(u => u.id !== `${message.author.id}`).forEach(user => {
     if(!coin[user.id]){
       coins[user.id] = {
         coins: 0,
