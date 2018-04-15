@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
   let uBank = coins[message.author.id].bank;
   let pBank = coins[pUser.id].bank;
 
-  if(sCoins < args[1]) return message.reply("there are not enough coins in your bank!");
+  if(sCoins < args[1]) return message.reply("there are not enough coins in your hand!");
   if(parseInt(args[1]) < 1) return message.reply("you can't donate less than 1 coin!")
 
   coins[message.author.id] = {
