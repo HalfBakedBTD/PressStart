@@ -63,7 +63,7 @@ module.exports.run = async (bot, message, args) => {
       bank: tBank
     }
     let fightEmbed = new Discord.RichEmbed()
-    .setColor('#2ecc71')
+    .setColor('#10ac84')
     .setTitle(`🗡 BATTLE 🔪`)
     .addField("Challenger:", `<@${message.author.id}>`, true)
     .addField("Winner:", `<@${message.author.id}>`, true)
@@ -82,7 +82,7 @@ module.exports.run = async (bot, message, args) => {
       bank: uBank
     }
     let fightEmbed = new Discord.RichEmbed()
-    .setColor('#2ecc71')
+    .setColor('#ee5253')
     .setTitle(`🗡 BATTLE 🔪`)
     .addField("Winner:", `${tUser}`, true)
     .addField("Looser:", `<@${message.author.id}>`, true)
