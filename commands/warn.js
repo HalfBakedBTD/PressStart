@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
   });
 
   let warnEmbed = new Discord.RichEmbed()
-  .setTital("⚠ WARNING ⚠")
+  .setTitle("⚠ WARNING ⚠")
   .setThumbnail("https://tse2.mm.bing.net/th?id=OIP.IJMhXskD06HXmBugmkU_tQHaEE&pid=Api")
   .setDescription(`**Warned User:** <@${wUser.id}>\n**Warned By:** <@${message.author.id}>\n**Warned In:** ${message.channel}\n**Reason:** ${reason}\n**User Warn Level:** ${warns[wUser.id].warns}`)
   .setColor("#f5f6fa")
