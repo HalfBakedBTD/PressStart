@@ -44,7 +44,8 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#18dcff")
     .addField("Roll:", `${dieAmt}`, true)
     .addField("Result:", `Win`, true)
-    .addField("Win/Loss:", `+${parseInt(args[0])} coins`, true)
+    .addField("Amount Got/Lost:", `+${parseInt(args[0])} coins.`, true)
+    .addField("Coins Left:", `${coins[message.author.id].coins}`, true)
     .setFooter(`${message.author.username} +${xpAmt}XP`, message.author.displayAvatarURL);
     
     message.channel.send(betEmbed)
@@ -64,7 +65,8 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#18dcff")
     .addField("Roll:", `${dieAmt}`, true)
     .addField("Result:", `Loss`, true)
-    .addField("Win/Loss:", `-${parseInt(args[0])} coins`, true)
+    .addField("Amount Got/Lost:", `-${parseInt(args[0])} coins.`, true)
+    .addField("Coins Left:", `${coins[message.author.id].coins}`, true)
     .setFooter(`${message.author.username} +${xpAmt}XP`, message.author.displayAvatarURL);
     
     message.channel.send(betEmbed)
