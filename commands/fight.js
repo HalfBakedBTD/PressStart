@@ -62,11 +62,15 @@ module.exports.run = async (bot, message, args) => {
       coins: 0,
       bank: tBank
     }
-    let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
-      waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
-      message.channel.send(waveMessage);
-      waveMessage.edit(`⚔ <@${message.author.id}> has defeted ${tUser}!\n🏆 <@${message.author.id}> has won ${tCoins} coins!`);
-      message.channel.send(waveMessage);
+    let fightEmbed = new Discord.RichEmbed()
+    .setColor('#2ecc71')
+    .setTitle(`🗡 BATTLE 🔪`)
+    .addField("Challenger:", `<@${message.author.id}>`, true)
+    .addField("Winner:", `<@${message.author.id}>`, true)
+    .addField("Looser:", `${tUser}`, true)
+    .addField("Coins Won:", `${tCoins}`, true)
+    
+    return message.channel.send(fightEmbed)
   }
   if (battle < 50) {
     coins[tUser.id] = {
@@ -77,11 +81,15 @@ module.exports.run = async (bot, message, args) => {
       coins: coins[message.author.id].coins - uCoins,
       bank: uBank
     }
-    let waveMessage = await message.channel.send(`\`FIGHT:\` 🔪 Swish 🗡`);
-      waveMessage.edit(`\`FIGHT:\` 🗡 Swosh 🔪`);
-      message.channel.send(waveMessage);
-      waveMessage.edit(`☠ <@${message.author.id}> has been defeted by ${tUser}!\n🏆 ${tUser} has won ${uCoins} coins!`);
-      message.channel.send(waveMessage);
+    let fightEmbed = new Discord.RichEmbed()
+    .setColor('#2ecc71')
+    .setTitle(`🗡 BATTLE 🔪`)
+    .addField("Winner:", `${tUser}`, true)
+    .addField("Looser:", `<@${message.author.id}>`, true)
+    .addField("Challenger:", `<@${message.author.id}>`, true)
+    .addField("Coins Won:", `${uCoins}`, true)
+    
+    return message.channel.send(fightEmbed)
   }
 }
 
