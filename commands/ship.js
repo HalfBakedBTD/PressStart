@@ -11,9 +11,9 @@ exports.run = async (bot, message, args) => {
     let pick = Math.floor((Math.random() * countries.length));
     
     let shipEmbed = new Discord.RichEmbed()
+    .setThumbnail("https://tse1.mm.bing.net/th?id=OIP.tfr_D1SglUNeoT52T8_yygHaFj&pid=15.1&P=0&w=235&h=177")
     .setColor("#18dcff")
     .setDescription(`We tied and boxed ${tUser} and shiped him to ${countries[pick]}.`)
-    .setAttachment("https://tse1.mm.bing.net/th?id=OIP.tfr_D1SglUNeoT52T8_yygHaFj&pid=15.1&P=0&w=235&h=177")
     
     return message.channel.send(shipEmbed)
   }
