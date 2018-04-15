@@ -49,9 +49,6 @@ module.exports.run = async (bot, message, args) => {
     };
   }
   
-  const userID = tUser.id;
-  const user = message.guild.fetchMember(userID);
-  
     let curxp = xp[tUser.id].xp;
     let curlvl = xp[tUser.id].level;
     let nxtLvlXp = curlvl * 50;
@@ -60,6 +57,7 @@ module.exports.run = async (bot, message, args) => {
   let plCoins = coins[tUser.id].coins;
   let plBank = coins[tUser.id].bank;
   let plNet = (plBank + plCoins) * xp[tUser.id].level;
+  let user = message.mentions.users.first();
 
   //return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${plCoins}\n🏦 Bank: ${plBank}\n\n\`This user need ${difference} experience to level up!\``)
     let meEmbed = new Discord.RichEmbed()
