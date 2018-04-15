@@ -22,20 +22,19 @@ module.exports.run = async (bot, message, args) => {
     if (err) console.log(err)
   });
 
-  //let warnEmbed = new Discord.RichEmbed()
-  //.setDescription("Warns")
-  //.setAuthor(message.author.username)
-  //.setColor("#fc6400")
-  //.addField("Warned User", `<@${wUser.id}>`)
-  //.addField("Warned In", message.channel)
-  //.addField("Number of Warnings", warns[wUser.id].warns)
-  //.addField("Reason", reason);
+  let warnEmbed = new Discord.RichEmbed()
+  .setTital("⚠ WARNING ⚠")
+  .setThumbnail("https://tse2.mm.bing.net/th?id=OIP.IJMhXskD06HXmBugmkU_tQHaEE&pid=Api")
+  .setDescription(`**Warned User:** <@${wUser.id}>\n**Warned By:** <@${message.author.id}>\n**Warned In:** ${message.channel}\n**Reason:** ${reason}\n**User Warn Level:** ${warns[wUser.id].warns}`)
+  .setColor("#f5f6fa")
 
   let warnchannel = message.guild.channels.find(`name`, "logs");
   if(!warnchannel) return message.reply("Couldn't find logs channel!");
 
-  warnchannel.send(`⚠ WARNING ⚠\n\nWarned User: <@${wUser.id}>\n\nWarned By: <@${message.author.id}>\n\nWarned In: ${message.channel}\n\nWarns for ${wUser}: ${warns[wUser.id].warns}\n\nReason: ${reason}`);
+  //warnchannel.send(`⚠ WARNING ⚠\n\nWarned User: <@${wUser.id}>\n\nWarned By: <@${message.author.id}>\n\nWarned In: ${message.channel}\n\nWarns for ${wUser}: ${warns[wUser.id].warns}\n\nReason: ${reason}`);
 
+  warnchannel.send(warnEmbed)
+  
   if(warns[wUser.id].warns == 2){
     let muterole = message.guild.roles.find(`name`, "muted");
     if(!muterole) return message.reply("You should create that role dude.");
