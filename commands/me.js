@@ -29,14 +29,8 @@ module.exports.run = async (bot, message, args) => {
 
     //return message.reply(`here are your stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${uCoins}\n🏦 Bank: ${uBank}\n\n\`You need ${difference} experience to level up!\``)
     let meEmbed = new Discord.RichEmbed()
-    .setTitle(`📔 ${message.author.username} 📔`)
-    .setThumbnail((message.author.displayAvatarURL))
     .setColor("#ff9f1a")
-    .addField("Level:", `${curlvl}`)
-    .addField("Experience:", `${curxp}/${nxtLvlXp}`)
-    .addField("Coins:", `${uCoins}`)
-    .addField("Bank:", `${uBank}`)
-    .addField("Net Worth:", `${uNet}`)
+    .setDescription(`<@${message.author.id}>'s Stats:\nLevel: ${curlvl}\nExperience: ${curxp}/${nxtLvlXp}\n\nCoins: ${uCoins}\nBank: ${uBank}\n\nNet Worth: ${uNet}`)
     .setFooter(`you need ${difference}XP to level up.`, message.author.displayAvatarURL);
     
     return message.channel.send(meEmbed)
@@ -65,15 +59,9 @@ module.exports.run = async (bot, message, args) => {
 
   //return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${plCoins}\n🏦 Bank: ${plBank}\n\n\`This user need ${difference} experience to level up!\``)
     let meEmbed = new Discord.RichEmbed()
-    .setTitle(`📔 ${tUser} 📔`)
-    .setThumbnail((tUser.displayAvatarURL))
     .setColor("#ff9f1a")
-    .addField("Level:", `${curlvl}`)
-    .addField("Experience:", `${curxp}/${nxtLvlXp}`)
-    .addField("Coins:", `${plCoins}`)
-    .addField("Bank:", `${plBank}`)
-    .addField("Net Worth:", `${plNet}`)
-    .setFooter(`needs ${difference}XP to level up.`, message.author.displayAvatarURL);
+    .setDescription(`<@${tUser.id}>'s Stats:\nLevel: ${curlvl}\nExperience: ${curxp}/${nxtLvlXp}\n\nCoins: ${plCoins}\nBank: ${plBank}\n\nNet Worth: ${plNet}`)
+    .setFooter(`this user needs ${difference}XP to level up.`, message.author.displayAvatarURL);
     
     return message.channel.send(meEmbed)
 }
