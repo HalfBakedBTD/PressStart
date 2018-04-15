@@ -21,8 +21,15 @@ exports.run = async (bot, message, args) => {
     if(!kickChannel) return message.channel.send("Can't find logs channel.");
 
     message.guild.member(kUser).kick(kReason);
-    kickChannel.send(`👢 USER KICKED 👢\n\nKicked: <@${kUser.id}>\n\nPunisher: <@${message.author.id}>\n\nKicked In: ${message.channel}\n\nReason: ${kReason}`);
-
+    //kickChannel.send(`👢 USER KICKED 👢\n\nKicked: <@${kUser.id}>\n\nPunisher: <@${message.author.id}>\n\nKicked In: ${message.channel}\n\nReason: ${kReason}`);
+    let banEmbed = new Discord.RichEmbed()
+    .setTitle("🔨 USER BANNED 🔨")
+    .setThumbnail("https://tse4.mm.bing.net/th?id=OIP.j3VvIndtHgqfynt9b8DwegHaHa&pid=15.1&P=0&w=300&h=300")
+    .setColor("#2f3640")
+    .setDescription(`**Kicked User:** ${kUser}\n**Kicked By:** <@${message.author.id}>\n**Banned In:** ${message.channel}\n**Reason:** ${kReason}`);
+    
+    kickChannel.send(banEmbed)
+    
     return;
 }
 
