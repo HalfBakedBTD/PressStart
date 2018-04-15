@@ -29,9 +29,13 @@ module.exports.run = async (bot, message, args) => {
   let xpAmt = (Math.floor(Math.random() * 9) + 1) * xp[message.author.id].level;
   
   if (dieAmt > 54) {
+    let win = parseInt(args[0]);
+    if (dieAmt === 100) {
+      win = win * 8
+    }
     xpAmt = xpAmt * 10
     coins[message.author.id] = {
-      coins: uCoins + parseInt(args[0]),
+      coins: uCoins + win,
       bank: uBank
     }
     xp[message.author.id] = {
@@ -42,10 +46,10 @@ module.exports.run = async (bot, message, args) => {
     .setTitle(`💰 Bet by ${message.author.username}:`)
     .setThumbnail((message.author.displayAvatarURL))
     .setColor("#18dcff")
-    .setDescription("`bet` has a 45% chance of a win which doubles your money.\nIn the `bet` command, you roll a one hundred sided die. A roll of 55+ gets you a win while a role of under 55 gets you a loss.")
+    .setDescription("In the `bet` command, you roll a one hundred sided die. A roll of 55+ gets you a win while a role of under 55 gets you a loss. If you roll an exact one hundred u get 8x your bet.")
     .addField("Roll:", `${dieAmt}`, true)
     .addField("Result:", `Win`, true)
-    .addField("Amount Got/Lost:", `+${parseInt(args[0])} coins.`, true)
+    .addField("Amount Got/Lost:", `+${win} coins.`, true)
     .addField("Coins Left:", `${coins[message.author.id].coins}`, true)
     .setFooter(`${message.author.username} +${xpAmt}XP`, message.author.displayAvatarURL);
     
