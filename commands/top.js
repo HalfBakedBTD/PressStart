@@ -5,7 +5,7 @@ let xp = require("../xp.json");
 module.exports.run = async (bot, message, args) => {
   message.channel.send(`Scanning for the top user!`)
   let topPlayer = message.author.id;
-  if(!coin[message.author.id]){
+  if(!coins[message.author.id]){
     coins[message.author.id] = {
       coins: 0,
       bank: 200
@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
   }
   let top = coins[message.author.id].coins + coins[message.author.id].bank;
   bot.users.filter(u => u.id !== `${message.author.id}`).forEach(user => {
-    if(!coin[user.id]){
+    if(!coins[user.id]){
       coins[user.id] = {
         coins: 0,
         bank: 200
