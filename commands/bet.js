@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Roll:", `${dieAmt}`, true)
     .addField("Result:", `Win`, true)
     .addField("Win/Loss:", `+${parseInt(args[0])} coins`, true)
-    .setFooter(`${message.author.username} +${xpAdd}XP`, message.author.displayAvatarURL);
+    .setFooter(`${message.author.username} +${xpAmt}XP`, message.author.displayAvatarURL);
     
     message.channel.send(betEmbed)
   }
@@ -65,7 +65,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Roll:", `${dieAmt}`, true)
     .addField("Result:", `Loss`, true)
     .addField("Win/Loss:", `-${parseInt(args[0])} coins`, true)
-    .setFooter(`${message.author.username} +${xpAdd}XP`, message.author.displayAvatarURL);
+    .setFooter(`${message.author.username} +${xpAmt}XP`, message.author.displayAvatarURL);
     
     message.channel.send(betEmbed)
   }
