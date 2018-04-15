@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
       level: 1
     };
   }
-  if(isNaN(args[1])) return message.reply("please supply a number!");
+  if(isNaN(args[0])) return message.reply("please supply a number!");
   
   let uCoins = coins[message.author.id].coins;
   let uBank = coins[message.author.id].bank;
