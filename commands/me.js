@@ -49,6 +49,9 @@ module.exports.run = async (bot, message, args) => {
     };
   }
   
+  const userID = tUser.id;
+  const user = message.guild.fetchMember(userID);
+  
     let curxp = xp[tUser.id].xp;
     let curlvl = xp[tUser.id].level;
     let nxtLvlXp = curlvl * 50;
@@ -61,6 +64,7 @@ module.exports.run = async (bot, message, args) => {
   //return message.reply(`here are ${tUser}'s stats:\n\n✨ Level: ${curlvl}\n💥 Experience: ${curxp}/${nxtLvlXp}\n\n💰 Coins: ${plCoins}\n🏦 Bank: ${plBank}\n\n\`This user need ${difference} experience to level up!\``)
     let meEmbed = new Discord.RichEmbed()
     .setColor("#ff9f1a")
+    .setThumbnail(user.displayAvatarURL)
     .setDescription(`**__<@${tUser.id}>'s Stats:__\nLevel:** ${curlvl}\n**Experience:** ${curxp}/${nxtLvlXp}\n\n**Coins:** ${plCoins}\n**Bank:** ${plBank}\n\n**Net Worth:** ${plNet}`)
     .setFooter(`This user needs ${difference}XP to level up.`, message.author.displayAvatarURL);
     
