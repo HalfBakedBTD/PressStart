@@ -49,7 +49,7 @@ module.exports.run = async (bot, message, args) => {
   //return message.reply(`**${cUser}** has:\n\n💰 Coins: ${plCoins}\n\n🏦 Bank: ${plBank}\n\n⛹ Net Worth: ${plNet}`)
     let balEmbed = new Discord.RichEmbed()
     .setColor('#2ecc71')
-    .setDescription(`**${cUser} has **${plCoins}** coins on hand and **${plBank}** coins in the bank.\nTheir net worth is **$${plNet}**.`)
+    .setDescription(`${cUser} has **${plCoins}** coins on hand and **${plBank}** coins in the bank.\nTheir net worth is **$${plNet}**.`)
     
     return message.channel.send(balEmbed)
 }
