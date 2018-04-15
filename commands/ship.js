@@ -18,7 +18,7 @@ exports.run = async (bot, message, args) => {
     return message.channel.send(shipEmbed)
   }
   if (dieAmt < 41) {
-    let type = ["lovers", "falling in and out of love 5 or more years", "fooling around partners", "hot lovers", "new couple", "boring marriage", "abusive relationship"];
+    let type = ["lovers", "falling in and out of love 5 or more years", "friends with benefits", "hot lovers", "new couple", "boring marriage", "abusive relationship"];
     let pick = Math.floor((Math.random() * type.length));
     
     let shipEmbed = new Discord.RichEmbed()
