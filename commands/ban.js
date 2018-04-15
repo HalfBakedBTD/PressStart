@@ -21,9 +21,14 @@ module.exports.run = async (bot, message, args) => {
     if(!incidentchannel) return message.channel.send("Can't find logs channel.");
 
     message.guild.member(bUser).ban(bReason);
-    incidentchannel.send(`\🔨 USER BANNED \🔨\n\nBanned User: <@${bUser.id}>\n\nBanned By: <@${message.author.id}>\n\nBanned In: ${message.channel}\n\nReason: ${bReason}`);
-
-
+    //incidentchannel.send(`\🔨 USER BANNED \🔨\n\nBanned User: <@${bUser.id}>\n\nBanned By: <@${message.author.id}>\n\nBanned In: ${message.channel}\n\nReason: ${bReason}`);
+    let banEmbed = new Discord.RichEmbed()
+    .setTitle("🔨 USER BANNED 🔨")
+    .setThumbnail("https://tse4.mm.bing.net/th?id=OIP.j3VvIndtHgqfynt9b8DwegHaHa&pid=15.1&P=0&w=300&h=300")
+    .setColor("#2f3640")
+    .setDescription("**Banned User:** ${bUser}\n**Banned By:** <@${message.author.id}>\n**Banned In:** ${message.channel}\n**Reason:** ${bReason}");
+    
+    incidentchannel.send(banEmbed)
     return;
 }
 
