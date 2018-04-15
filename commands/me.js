@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#ff9f1a")
     .setThumbnail((message.author.displayAvatarURL))
     .setDescription(`**__<@${message.author.id}>'s Stats:__\n\nLevel:** ${curlvl}\n**Experience:** ${curxp}/${nxtLvlXp}\n\n**Coins:** ${uCoins}\n**Bank:** ${uBank}\n\n**Net Worth:** ${uNet}`)
-    .setFooter(`**You need ${difference}XP to level up.**`, message.author.displayAvatarURL);
+    .setFooter(`You need ${difference}XP to level up.`, message.author.displayAvatarURL);
     
     return message.channel.send(meEmbed)
   }
@@ -62,7 +62,7 @@ module.exports.run = async (bot, message, args) => {
     let meEmbed = new Discord.RichEmbed()
     .setColor("#ff9f1a")
     .setDescription(`**__<@${tUser.id}>'s Stats:__\nLevel:** ${curlvl}\n**Experience:** ${curxp}/${nxtLvlXp}\n\n**Coins:** ${plCoins}\n**Bank:** ${plBank}\n\n**Net Worth:** ${plNet}`)
-    .setFooter(`**This user needs ${difference}XP to level up.**`, message.author.displayAvatarURL);
+    .setFooter(`This user needs ${difference}XP to level up.`, message.author.displayAvatarURL);
     
     return message.channel.send(meEmbed)
 }
