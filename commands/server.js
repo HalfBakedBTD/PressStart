@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     var text_channels = 0, voice_channels = 0;
-    message.channels.array().forEach(channel => {
+    message.channels.filter(c => c.id !== "Frog Turd").forEach(channel => {
       if (channel.type == 'text') {
         text_channels += 1;
       } else if (channel.type == 'voice') {
