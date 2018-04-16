@@ -1,17 +1,30 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    //let sicon = message.guild.iconURL;
-    //let serverembed = new Discord.RichEmbed()
-    //.setDescription("Server Information")
-    //.setColor("#15f153")
-    //.setThumbnail(sicon)
-    //.addField("Server Name", message.guild.name)
-    //.addField("Created On", message.guild.createdAt)
-    //.addField("You Joined", message.member.joinedAt)
-    //.addField("Total Members", message.guild.memberCount);
-
-    message.reply(`here is the server information \n\n📟 Server Name: ${message.guild.name}\n\n👑 Owner: ${message.guild.owner}\n\n💳 Owner ID: ${message.guild.ownerID}\n\n🌐 Region: ${message.guild.region}\n\n🚦 Verification Level: ${message.guild.verificationLevel}\n\nTotal Members: ${message.guild.memberCount}`);
+    var text_channels = 0, voice_channels = 0;
+    message.channels.array().forEach(channel => {
+      if (channel.type == 'text') {
+        text_channels += 1;
+      } else if (channel.type == 'voice') {
+        voice_channels += 1;
+      }
+    });
+    //message.reply(`here is the server information \n\n📟 Server Name: ${message.guild.name}\n\n👑 Owner: ${message.guild.owner}\n\n💳 Owner ID: ${message.guild.ownerID}\n\n🌐 Region: ${message.guild.region}\n\n🚦 Verification Level: ${message.guild.verificationLevel}\n\nTotal Members: ${message.guild.memberCount}`);
+    let guildAvatar = message.guild.iconURL;
+    let guildEmbed = new Discord.RichEmbed()
+    .setTitle("Server Information.")
+    .setColor('#27ae60')
+    .setThumbnail(guildAvatar)
+    .addField("Name:", `${message.guild.name}`, true)
+    .addField("Owner:", `${message.guild.owner}`, true)
+    .addField("Owner ID:", `${message.guild.ownerID}`, true)
+    .addField("Text Channels:", `${text_channels}`, true)
+    .addField("Voice Channels:", `${voice_channels}`, true)
+    .addField("Region:", `${message.guild.region}`, true)
+    .addField("Verification Level:", `${message.guild.verificationLevel}`, true)
+    .addField("Members:", `${message.guild.memberCount}`, true)
+    
+    message.channel.send(guildEmbed)
 }
 
 module.exports.help = {
