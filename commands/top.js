@@ -65,7 +65,7 @@ module.exports.run = async (bot, message, args) => {
   let topEmbed = new Discord.RichEmbed()
   .setColor("#fff200")
   .setThumbnail("https://tse2.mm.bing.net/th?id=OIP.QBoHWsq4Y9QFzlFHAJatVAHaF7&pid=Api")
-  .setDescription(`${topCoins} has the most coins. [💰${topCoinAmt}]\n${topXP} has the most xp. [${topXPAmt}XP]\n${topLevel} owns the current highest level. [Lvl. ${topLevelAmt}]`)
+  .setDescription(`**${topCoins}** has the most coins. [💰${topCoinAmt}]\n\n**${topXP}** has the most xp. [${topXPAmt}XP]\n\n**${topLevel}** owns the current highest level. [Lvl. ${topLevelAmt}]`)
 
   message.channel.send(topEmbed)
 }
