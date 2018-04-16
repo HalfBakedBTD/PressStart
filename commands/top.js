@@ -42,29 +42,13 @@ module.exports.run = async (bot, message, args) => {
       topCoinAmt = plBal
       topCoins = `<@${user.id}>`
     }
-    if (plBal === topCoinAmt) {
-      topCoinAmt = plBal
-      topCoins = topCoins + `and <@${user.id}>`
-    }
-    if (plBal > topCoinAmt) {
-      topCoinAmt = plBal
-      topCoins = `<@${user.id}>`
-    }
     if (plXP > topXPAmt) {
       topXPAmt = plXP
       topXP = `<@${user.id}>`
     }
-    if (plXP === topXPAmt) {
-      topXPAmt = plXP
-      topXP = topXP + `and <@${user.id}>`
-    }
     if (plLevel > topLevelAmt) {
       topLevelAmt = plLevel
       topLevel = `<@${user.id}>`
-    }
-    if (plLevel > topLevelAmt) {
-      topLevelAmt = plLevel
-      topLevel = topLevel + `and <@${user.id}>`
     }
   });
   let topEmbed = new Discord.RichEmbed()
