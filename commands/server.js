@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(guildEmbed)
 
     .catch(console.error);
-  }
+  });
 }
 
 module.exports.help = {
