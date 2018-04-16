@@ -56,42 +56,131 @@ module.exports.run = async (bot, message, args) => {
     let plXP = xp[message.author.id].xp;
     let plLevel = xp[message.author.id].level;
     if (plBal > topCoinAmt) {
+      topCoinAmtTen = topCoinAmtNine
+      topCoinsTen = topCoinsNine
+      topCoinAmtNine = topCoinAmtEight
+      topCoinsNine = topCoinsEight
+      topCoinAmtEight = topCoinAmtSeven
+      topCoinsEight = topCoinsSeven
+      topCoinAmtSeven = topCoinAmtSix
+      topCoinsSeven = topCoinsSix
+      topCoinAmtSix = topCoinAmtFive
+      topCoinsSix = topCoinsFive
+      topCoinAmtFive = topCoinAmtFour
+      topCoinsFive = topCoinsFour
+      topCoinAmtFour = topCoinAmtThree
+      topCoinsFour = topCoinsThree
+      topCoinAmtThree = topCoinAmtTwo
+      topCoinsThree = topCoinsTwo
+      topCoinAmtTwo = topCoinAmt
+      topCoinsTwo = topCoins
       topCoinAmt = plBal
       topCoins = `<@${user.id}>`
     } else {
       if (plBal > topCoinAmtTwo) {
+        topCoinAmtTen = topCoinAmtNine
+        topCoinsTen = topCoinsNine
+        topCoinAmtNine = topCoinAmtEight
+        topCoinsNine = topCoinsEight
+        topCoinAmtEight = topCoinAmtSeven
+        topCoinsEight = topCoinsSeven
+        topCoinAmtSeven = topCoinAmtSix
+        topCoinsSeven = topCoinsSix
+        topCoinAmtSix = topCoinAmtFive
+        topCoinsSix = topCoinsFive
+        topCoinAmtFive = topCoinAmtFour
+        topCoinsFive = topCoinsFour
+        topCoinAmtFour = topCoinAmtThree
+        topCoinsFour = topCoinsThree
+        topCoinAmtThree = topCoinAmtTwo
+        topCoinsThree = topCoinsTwo
         topCoinAmtTwo = plBal
         topCoinsTwo = `<@${user.id}>`
       } else {
         if (plBal > topCoinAmtThree) {
+          topCoinAmtTen = topCoinAmtNine
+          topCoinsTen = topCoinsNine
+          topCoinAmtNine = topCoinAmtEight
+          topCoinsNine = topCoinsEight
+          topCoinAmtEight = topCoinAmtSeven
+          topCoinsEight = topCoinsSeven
+          topCoinAmtSeven = topCoinAmtSix
+          topCoinsSeven = topCoinsSix
+          topCoinAmtSix = topCoinAmtFive
+          topCoinsSix = topCoinsFive
+          topCoinAmtFive = topCoinAmtFour
+          topCoinsFive = topCoinsFour
+          topCoinAmtFour = topCoinAmtThree
+          topCoinsFour = topCoinsThree
           topCoinAmtThree = plBal
           topCoinsThree = `<@${user.id}>`
         } else {
           if (plBal > topCoinAmtFour) {
+            topCoinAmtTen = topCoinAmtNine
+            topCoinsTen = topCoinsNine
+            topCoinAmtNine = topCoinAmtEight
+            topCoinsNine = topCoinsEight
+            topCoinAmtEight = topCoinAmtSeven
+            topCoinsEight = topCoinsSeven
+            topCoinAmtSeven = topCoinAmtSix
+            topCoinsSeven = topCoinsSix
+            topCoinAmtSix = topCoinAmtFive
+            topCoinsSix = topCoinsFive
+            topCoinAmtFive = topCoinAmtFour
+            topCoinsFive = topCoinsFour
             topCoinAmtFour = plBal
             topCoinsFour = `<@${user.id}>`
           } else {
             if (plBal > topCoinAmtFive) {
+              topCoinAmtTen = topCoinAmtNine
+              topCoinsTen = topCoinsNine
+              topCoinAmtNine = topCoinAmtEight
+              topCoinsNine = topCoinsEight
+              topCoinAmtEight = topCoinAmtSeven
+              topCoinsEight = topCoinsSeven
+              topCoinAmtSeven = topCoinAmtSix
+              topCoinsSeven = topCoinsSix
+              topCoinAmtSix = topCoinAmtFive
+              topCoinsSix = topCoinsFive
               topCoinAmtFive = plBal
               topCoinsFive = `<@${user.id}>`
             } else {
               if (plBal > topCoinAmtSix) {
+                topCoinAmtTen = topCoinAmtNine
+                topCoinsTen = topCoinsNine
+                topCoinAmtNine = topCoinAmtEight
+                topCoinsNine = topCoinsEight
+                topCoinAmtEight = topCoinAmtSeven
+                topCoinsEight = topCoinsSeven
+                topCoinAmtSeven = topCoinAmtSix
+                topCoinsSeven = topCoinsSix
                 topCoinAmtSix = plBal
                 topCoinsSix = `<@${user.id}>`
               } else {
                 if (plBal > topCoinAmtSix) {
-                  topCoinAmtSix = plBal
-                  topCoinsSix = `<@${user.id}>`
+                  message.channel.send("`If the bot sends this message something is screwed up!`")
                 } else {
                   if (plBal > topCoinAmtSeven) {
+                    topCoinAmtTen = topCoinAmtNine
+                    topCoinsTen = topCoinsNine
+                    topCoinAmtNine = topCoinAmtEight
+                    topCoinsNine = topCoinsEight
+                    topCoinAmtEight = topCoinAmtSeven
+                    topCoinsEight = topCoinsSeven
                     topCoinAmtSeven = plBal
                     topCoinsSeven = `<@${user.id}>`
                   } else {
                     if (plBal > topCoinAmtEight) {
+                      topCoinAmtTen = topCoinAmtNine
+                      topCoinsTen = topCoinsNine
+                      topCoinAmtNine = topCoinAmtEight
+                      topCoinsNine = topCoinsEight
                       topCoinAmtEight = plBal
                       topCoinsEight = `<@${user.id}>`
                     } else {
                       if (plBal > topCoinAmtNine) {
+                        topCoinAmtTen = topCoinAmtNine
+                        topCoinsTen = topCoinsNine
                         topCoinAmtNine = plBal
                         topCoinsNine = `<@${user.id}>`
                       } else {
