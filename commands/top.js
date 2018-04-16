@@ -96,8 +96,9 @@ module.exports.run = async (bot, message, args) => {
                         topCoinsNine = `<@${user.id}>`
                       } else {
                         if (plBal > topCoinAmtTen) {
-                        topCoinAmtTen = plBal
-                        topCoinsTen = `<@${user.id}>`
+                          topCoinAmtTen = plBal
+                          topCoinsTen = `<@${user.id}>`
+                        }
                       }
                     }
                   }
