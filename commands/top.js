@@ -3,7 +3,6 @@ let coins = require("../coins.json");
 let xp = require("../xp.json");
 
 module.exports.run = async (bot, message, args) => {
-  message.channel.send(`Scanning for the top user!`)
   let topCoins = `<@${message.author.id}>`;
   let topXP = `<@${message.author.id}>`;
   let topLevel = `<@${message.author.id}>`;
