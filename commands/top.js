@@ -125,6 +125,8 @@ module.exports.run = async (bot, message, args) => {
   message.channel.send(topEmbed)
 }
 
+//HELP
+                                                                 
 module.exports.help = {
   name: "top"
 }
