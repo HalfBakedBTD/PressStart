@@ -39,7 +39,11 @@ module.exports.run = async (bot, message, args) => {
     bank: uBank
   }
   
-  message.reply(`you have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${streak}`)
+  //message.reply(`you have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${streak}`)
+  let betEmbed = new Discord.RichEmbed()
+  .setThumbnail((message.author.displayAvatarURL))
+  .setColor("#9b59b6")
+  .setDescription(`<@${message.author.id}>, you have claimed ${prize} coins!\n\nStreak: ${uClaims}\n${streak}☑`)
   claim_talked_users.add(message.author.id);
     setTimeout(() => {
       claim_talked_users.delete(message.author.id);
