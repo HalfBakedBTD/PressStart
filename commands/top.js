@@ -4,6 +4,15 @@ let xp = require("../xp.json");
 
 module.exports.run = async (bot, message, args) => {
   let topCoins = `<@${message.author.id}>`;
+  let topCoinsTwo = `<@${message.author.id}>`;
+  let topCoinsThree = `<@${message.author.id}>`;
+  let topCoinsFour = `<@${message.author.id}>`;
+  let topCoinsFive = `<@${message.author.id}>`;
+  let topCoinsSix = `<@${message.author.id}>`;
+  let topCoinsSeven = `<@${message.author.id}>`;
+  let topCoinsEight = `<@${message.author.id}>`;
+  let topCoinsNine = `<@${message.author.id}>`;
+  let topCoinsTen = `<@${message.author.id}>`;
   let topXP = `<@${message.author.id}>`;
   let topLevel = `<@${message.author.id}>`;
   if(!coins[message.author.id]){
@@ -19,6 +28,15 @@ module.exports.run = async (bot, message, args) => {
     };
   }
   let topCoinAmt = coins[message.author.id].coins + coins[message.author.id].bank;
+  let topCoinAmtTwo = 1;
+  let topCoinAmtThree = 1;
+  let topCoinAmtFour = 1;
+  let topCoinAmtFive = 1;
+  let topCoinAmtSix = 1;
+  let topCoinAmtSeven = 1;
+  let topCoinAmtEight = 1;
+  let topCoinAmtNine = 1;
+  let topCoinAmtTen = 1;
   let topXPAmt = xp[message.author.id].xp;
   let topLevelAmt = xp[message.author.id].level;
   bot.users.filter(u => u.id !== `${message.author.id}`).forEach(user => {
@@ -40,7 +58,56 @@ module.exports.run = async (bot, message, args) => {
     if (plBal > topCoinAmt) {
       topCoinAmt = plBal
       topCoins = `<@${user.id}>`
-    }
+    } else {
+      if (plBal > topCoinAmtTwo) {
+        topCoinAmtTwo = plBal
+        topCoinsTwo = `<@${user.id}>`
+      } else {
+        if (plBal > topCoinAmtThree) {
+          topCoinAmtThree = plBal
+          topCoinsThree = `<@${user.id}>`
+        } else {
+          if (plBal > topCoinAmtFour) {
+            topCoinAmtFour = plBal
+            topCoinsFour = `<@${user.id}>`
+          } else {
+            if (plBal > topCoinAmtFive) {
+              topCoinAmtFive = plBal
+              topCoinsFive = `<@${user.id}>`
+            } else {
+              if (plBal > topCoinAmtSix) {
+                topCoinAmtSix = plBal
+                topCoinsSix = `<@${user.id}>`
+              } else {
+                if (plBal > topCoinAmtSix) {
+                  topCoinAmtSix = plBal
+                  topCoinsSix = `<@${user.id}>`
+                } else {
+                  if (plBal > topCoinAmtSeven) {
+                    topCoinAmtSeven = plBal
+                    topCoinsSeven = `<@${user.id}>`
+                  } else {
+                    if (plBal > topCoinAmtEight) {
+                      topCoinAmtEight = plBal
+                      topCoinsEight = `<@${user.id}>`
+                    } else {
+                      if (plBal > topCoinAmtNine) {
+                        topCoinAmtNine = plBal
+                        topCoinsNine = `<@${user.id}>`
+                      } else {
+                        if (plBal > topCoinAmtTen) {
+                        topCoinAmtTen = plBal
+                        topCoinsTen = `<@${user.id}>`
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    } 
     if (plXP > topXPAmt) {
       topXPAmt = plXP
       topXP = `<@${user.id}>`
@@ -53,7 +120,7 @@ module.exports.run = async (bot, message, args) => {
   let topEmbed = new Discord.RichEmbed()
   .setColor("#fff200")
   .setThumbnail("https://tse2.mm.bing.net/th?id=OIP.QBoHWsq4Y9QFzlFHAJatVAHaF7&pid=Api")
-  .setDescription(`**${topCoins}** has the most coins. [💰${topCoinAmt}]\n\n**${topXP}** has the most xp. [${topXPAmt}XP]\n\n**${topLevel}** owns the current highest level. [Lvl. ${topLevelAmt}]`)
+  .setDescription(`**${topXP}** has the most xp. [${topXPAmt}XP]\n\n**${topLevel}** has the current highest level. [Lvl. ${topLevelAmt}]\n\nTop Coins:\n\t1st - ${topCoins} with 💰${topCoinAmt}.\n\t2nd - ${topCoinsTwo} with 💰${topCoinAmtTwo}.\n\t3rd - ${topCoinsThree} with 💰${topCoinAmtThree}.\n\t4th - ${topCoinsFour} with 💰${topCoinAmtFour}.\n\t5th - ${topCoinsFive} with 💰${topCoinAmtFive}.\n\t6th - ${topCoinsSix} with 💰${topCoinAmtSix}.\n\t7th - ${topCoinsSeven} with 💰${topCoinAmtSeven}.\n\t8thst - ${topCoinsEight} with 💰${topCoinAmtEight}.\n\t9th - ${topCoinsNine} with 💰${topCoinAmtNine}.\n\t10th - ${topCoinsTen} with 💰${topCoinAmtTen}.`)
 
   message.channel.send(topEmbed)
 }
