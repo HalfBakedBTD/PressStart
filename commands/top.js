@@ -49,18 +49,6 @@ module.exports.run = async (bot, message, args) => {
       topLevelAmt = plLevel
       topLevel = `<@${user.id}>`
     }
-    if (plBal === topCoinAmt) {
-      topCoinAmt = plBal
-      topCoins = `Multiple Users`
-    }
-    if (plXP === topXPAmt) {
-      topXPAmt = plXP
-      topXP = `Multiple Users`
-    }
-    if (plLevel === topLevelAmt) {
-      topLevelAmt = plLevel
-      topLevel = `Multiple Users`
-    }
   });
   let topEmbed = new Discord.RichEmbed()
   .setColor("#fff200")
