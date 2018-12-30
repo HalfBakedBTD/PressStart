@@ -7,6 +7,7 @@ let coins = require("./coins.json");
 let xp = require("./xp.json");
 let claims = require("./claims.json")
 let game = require("./games.json")
+let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 fs.readdir("./commands/", (err, files) => {
 
