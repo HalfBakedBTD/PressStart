@@ -1,12 +1,12 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
+let warns = JSON.parse(fs.readFileSync("../warnings.json", "utf8"));
 
 module.exports.run = async (bot, message, args) => {
 
   //!warn @daeshan <reason>
-  if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("No can do pal! You don't have the perms!");
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("No can do pal! You don't have the perms!");
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   if(!wUser) return message.reply("Couldn't find them!");
   if(wUser.hasPermission("MANAGE_MESSAGES")) return message.reply("They waaaay too kewl to warn!");
@@ -21,6 +21,8 @@ module.exports.run = async (bot, message, args) => {
   fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
     if (err) console.log(err)
   });
+  
+  wUser.send(`You have been warned in ${message.guild.name} for ${reason}`);
 
   let warnEmbed = new Discord.RichEmbed()
   .setTitle("⚠ WARNING ⚠")
@@ -28,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
   .setDescription(`**Warned User:** <@${wUser.id}>\n**Warned By:** <@${message.author.id}>\n**Warned In:** ${message.channel}\n**Reason:** ${reason}\n**User Warn Level:** ${warns[wUser.id].warns}`)
   .setColor("#f5f6fa")
 
-  let warnchannel = message.guild.channels.find(`name`, "logs");
+  let warnchannel = message.guild.channels.find(`name`, "zap-logs");
   if(!warnchannel) return message.reply("Couldn't find logs channel!");
 
   //warnchannel.send(`⚠ WARNING ⚠\n\nWarned User: <@${wUser.id}>\n\nWarned By: <@${message.author.id}>\n\nWarned In: ${message.channel}\n\nWarns for ${wUser}: ${warns[wUser.id].warns}\n\nReason: ${reason}`);
@@ -37,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
   
   if(warns[wUser.id].warns == 2){
     let muterole = message.guild.roles.find(`name`, "muted");
-    if(!muterole) return message.reply("You should create that role dude.");
+    if(!muterole) return message.reply("You should create muted role dude. `.mrc`");
 
     let mutetime = "30m";
     await(wUser.addRole(muterole.id));
