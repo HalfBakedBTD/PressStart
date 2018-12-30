@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-let game = require("./games.json")
+let game = require("../games.json")
 
 module.exports.run = (bot, message, args) => {
   let penGameEmbed = new Discord.RichEmbed()
