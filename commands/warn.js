@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
+let warns = require("../warnings.json")
 
 module.exports.run = async (bot, message, args) => {
 
@@ -36,6 +36,12 @@ module.exports.run = async (bot, message, args) => {
   //warnchannel.send(`⚠ WARNING ⚠\n\nWarned User: <@${wUser.id}>\n\nWarned By: <@${message.author.id}>\n\nWarned In: ${message.channel}\n\nWarns for ${wUser}: ${warns[wUser.id].warns}\n\nReason: ${reason}`);
 
   warnchannel.send(warnEmbed)
+  
+  if (!warns[wUser.id]) {
+    warns[wUser.id] = {
+      warns: 0
+    }
+  }
   
   if(warns[wUser.id].warns == 2){
     let muterole = message.guild.roles.find(`name`, "muted");
