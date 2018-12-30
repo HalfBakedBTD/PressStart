@@ -29,7 +29,7 @@ fs.readdir("./commands/", (err, files) => {
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
 
-  bot.user.setGame("r!help");
+  bot.user.setGame(".help");
 });
 
 bot.on('guildCreate', guild => {
